@@ -1,5 +1,7 @@
 import { AuthProvider } from '@/components/auth/provider'
 import { Inter } from 'next/font/google'
+import { Header } from '@/components/header/header'
+import { cx } from '@/utils/cx'
 import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -12,9 +14,12 @@ export const metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
+    <html lang='en' className='[color-scheme:dark]'>
+      <body className={cx('bg-zinc-700', inter.className)}>
+        <AuthProvider>
+          <Header />
+          <main className='h-screen'>{children}</main>
+        </AuthProvider>
       </body>
     </html>
   )
