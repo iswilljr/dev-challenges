@@ -1,6 +1,7 @@
 import { AuthProvider } from '@/components/auth/provider'
 import { Inter } from 'next/font/google'
 import { Header } from '@/components/header/header'
+import { Footer } from '@/components/footer/footer'
 import { cx } from '@/utils/cx'
 import '@/styles/globals.css'
 
@@ -15,10 +16,14 @@ export const metadata = {
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html lang='en' className='[color-scheme:dark]'>
+      <head>
+        <link rel='icon' href='/favicon.svg' />
+      </head>
       <body className={cx('bg-zinc-700', inter.className)}>
         <AuthProvider>
           <Header />
-          <main className='h-screen'>{children}</main>
+          <main>{children}</main>
+          <Footer />
         </AuthProvider>
       </body>
     </html>
