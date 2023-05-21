@@ -29,6 +29,7 @@ export function Card({ description, href, image, title, className, ...props }: C
           <div className='relative h-44 w-full overflow-hidden rounded-md bg-white'>
             <Image
               className={cx('mx-auto object-contain', { 'duration-300 group-hover:scale-110': href })}
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               src={image}
               alt={title}
               fill
