@@ -37,7 +37,7 @@ export function HeaderMenu({ profile }: HeaderMenuProps) {
         leaveFrom='transform scale-100 opacity-100'
         leaveTo='transform scale-95 opacity-0'
       >
-        <Menu.Items className='absolute right-0 top-8 w-36 origin-top-right divide-y divide-gray-500 rounded-md border border-gray-500 bg-zinc-600 px-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 top-4 w-36 origin-top-right divide-y divide-gray-500 rounded-md border border-gray-500 bg-zinc-600 px-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='py-1'>
             {links.map(({ href, label, icon: Icon }) => (
               <Menu.Item key={href}>
