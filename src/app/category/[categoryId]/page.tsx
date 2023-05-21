@@ -1,7 +1,6 @@
-import { notFound } from 'next/navigation'
 import { Categories } from '@/components/categories/categories'
 import { authOptions } from '@/utils/auth-options'
-import { categories } from '@/utils/categories'
+import { getCategoryFromParams } from '@/utils/get-category'
 import { prisma } from '@/utils/prisma'
 import { getServerSession } from 'next-auth'
 import type { ChallengeType } from '@prisma/client'
@@ -26,10 +25,7 @@ async function getCategoryChallenges(type: ChallengeType) {
 }
 
 export default async function Category({ params }: { params: { categoryId: string } }) {
-  const category = categories.find(category => category.id === params.categoryId)
-
-  if (!category) notFound()
-
+  const category = getCategoryFromParams(params)
   const challenges = await getCategoryChallenges(category.type)
 
   return (

@@ -1,15 +1,5 @@
 import { GeneralForm } from '@/components/forms/general-form'
-import { authOptions } from '@/utils/auth-options'
-import { getServerSession } from 'next-auth'
-import { redirect } from 'next/navigation'
-
-async function getUser() {
-  const session = await getServerSession(authOptions)
-
-  if (!session?.user) redirect('/')
-
-  return session.user
-}
+import { getUser } from '@/utils/get-user'
 
 export default async function Home() {
   const user = await getUser()
