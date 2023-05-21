@@ -6,6 +6,7 @@ import { Skeleton } from '../skeleton/skeleton'
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   bottomSection?: React.ReactNode
   description: string
+  descriptionMaxLines?: boolean
   href?: string
   image: string
   title: string
@@ -15,11 +16,20 @@ export interface CardSkeletonProps extends React.HTMLAttributes<HTMLDivElement> 
   animate?: boolean
 }
 
-export function Card({ description, href, image, title, className, ...props }: CardProps) {
+export function Card({
+  bottomSection,
+  description,
+  descriptionMaxLines,
+  href,
+  image,
+  title,
+  className,
+  ...props
+}: CardProps) {
   const Component: React.FC<any> = (href ? Link : 'div') as any
 
   return (
-    <article className='h-full'>
+    <article className='relative h-full'>
       <Component
         className={cx(
           'group block h-full rounded-md border border-gray-500 bg-zinc-800/50 p-4',
@@ -39,7 +49,10 @@ export function Card({ description, href, image, title, className, ...props }: C
           />
         </div>
         <h3 className='mt-4 text-lg font-semibold text-gray-200'>{title}</h3>
-        <div className='text-md mb-4 mt-2 text-gray-300/90'>{description}</div>
+        <div className={cx('text-md mb-4 mt-2 text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>
+          {description}
+        </div>
+        {bottomSection}
       </Component>
     </article>
   )
