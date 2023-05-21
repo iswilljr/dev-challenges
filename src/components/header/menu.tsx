@@ -17,14 +17,16 @@ export function HeaderMenu({ profile }: HeaderMenuProps) {
   return (
     <Menu>
       <Menu.Button className='group flex items-center gap-1'>
-        <Image
-          className='h-9 w-9 rounded-md'
-          src={profile ?? '/images/placeholder.jpg'}
-          alt='User Profile'
-          width={36}
-          height={36}
-          priority
-        />
+        <div className='h-9 w-9 rounded-md bg-gray-500'>
+          <Image
+            className='rounded-md'
+            src={profile ?? '/images/placeholder.jpg'}
+            alt='User Profile'
+            width={36}
+            height={36}
+            priority
+          />
+        </div>
         <TbCaretDown className='fill-gray-500 stroke-gray-500 transition group-hover:fill-gray-300 group-hover:stroke-gray-300 group-[[aria-expanded="true"]]:fill-gray-300 group-[[aria-expanded="true"]]:stroke-gray-300' />
       </Menu.Button>
       <Transition
