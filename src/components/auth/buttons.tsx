@@ -6,10 +6,10 @@ import { BsGithub } from 'react-icons/bs'
 import { Button } from '../button/button'
 
 interface SignInButtonProps {
-  status: 'loading' | 'unauthenticated'
+  status?: 'loading' | 'unauthenticated'
 }
 
-export function SignInButton({ status }: SignInButtonProps) {
+export function SignInButton({ status = 'unauthenticated' }: SignInButtonProps) {
   const search = useSearchParams()
 
   return status === 'unauthenticated' ? (
@@ -20,7 +20,7 @@ export function SignInButton({ status }: SignInButtonProps) {
       onClick={() => {
         signIn('github', {
           redirect: false,
-          callbackUrl: search.get('callbackUrl') ?? '/',
+          callbackUrl: search.get('callbackUrl') ?? window.location.href,
         }).catch(err => console.error(err))
       }}
     >
