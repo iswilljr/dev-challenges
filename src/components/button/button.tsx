@@ -1,13 +1,23 @@
 import { cx } from '@/utils/cx'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
   icon?: React.ReactNode
   variant?: 'primary' | 'secondary' | 'outlined' | 'danger'
+  component?: any
 }
 
-export function Button({ children, className, icon, variant = 'primary', ...props }: ButtonProps) {
+export function Button({
+  children,
+  className,
+  component,
+  icon,
+  variant = 'primary',
+  ...props
+}: ButtonProps & Record<string, any>) {
+  const Component: React.FC<any> = component ?? 'button'
+
   return (
-    <button
+    <Component
       className={cx(
         'flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none disabled:opacity-50',
         {
@@ -23,6 +33,6 @@ export function Button({ children, className, icon, variant = 'primary', ...prop
     >
       {icon != null && <span className={cx(children != null && 'mr-2')}>{icon}</span>}
       {children}
-    </button>
+    </Component>
   )
 }
