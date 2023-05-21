@@ -1,3 +1,5 @@
+const withTailwindForms = require('@tailwindcss/forms')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,5 +15,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [withTailwindForms({ strategy: 'class' })],
 }
