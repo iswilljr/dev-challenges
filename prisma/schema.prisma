@@ -79,8 +79,6 @@ model Challenge {
 }
 
 enum ChallengeType {
-  backend
-  databases
   frameworks
   frontend
   fullstack

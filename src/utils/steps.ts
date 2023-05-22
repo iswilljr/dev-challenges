@@ -4,7 +4,7 @@ export const steps: CardProps[] = [
   {
     title: 'Step 1: Choose a Challenge',
     description:
-      'Explore a variety of web development challenges covering topics like frontend, backend, databases, etc. Choose the challenge that interests you most and matches your skill level.',
+      'Explore a variety of web development challenges covering topics like frontend, fullstack, responsive design, etc. Choose the challenge that interests you most and matches your skill level.',
     image: '/images/steps/select.png',
   },
   {

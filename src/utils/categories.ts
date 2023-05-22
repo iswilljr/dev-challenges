@@ -67,44 +67,6 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'backend',
-    type: ChallengeType.backend,
-    title: 'Backend Development',
-    description:
-      'Dive into backend development using technologies like Node.js, Python, or Ruby. Learn how to build APIs, handle data, and implement server-side logic.',
-    image: '/images/categories/backend.png',
-    href: '/category/backend',
-    interestingComments: [
-      'Explore server-side programming',
-      'Learn about building APIs',
-      'Handle data efficiently on the backend',
-    ],
-    guide: [
-      'Use a backend framework of your choice',
-      'Ensure secure handling of user data',
-      'Implement robust error handling and validation',
-    ],
-  },
-  {
-    id: 'databases',
-    type: ChallengeType.databases,
-    title: 'Database Integration',
-    description:
-      'Learn to integrate databases like MySQL, PostgreSQL, or MongoDB into your web applications. Practice data modeling, querying, and working with database management systems.',
-    image: '/images/categories/databases.png',
-    href: '/category/databases',
-    interestingComments: [
-      'Explore different database management systems',
-      'Practice creating efficient database schemas',
-      'Learn advanced querying techniques',
-    ],
-    guide: [
-      'Choose a database technology suitable for your project',
-      'Ensure data integrity and security',
-      'Optimize database queries for performance',
-    ],
-  },
-  {
     id: 'fullstack',
     type: ChallengeType.fullstack,
     title: 'Full-Stack Development',
