@@ -1,13 +1,14 @@
 import Link from 'next/link'
 import { Button } from '@/components/button/button'
+import { prisma } from '@/utils/prisma'
 
-interface ChallengeLayoutProps {
-  params: {
-    challengeId: string
-  }
+export async function generateStaticParams(): Promise<ChallengeParams[]> {
+  const challenges = await prisma.challenge.findMany()
+
+  return challenges.map(challenge => ({ challengeId: challenge.id }))
 }
 
-export default function ChallengeLayout({ children, params }: React.PropsWithChildren<ChallengeLayoutProps>) {
+export default function ChallengeLayout({ children, params }: React.PropsWithChildren<ChallengePageParams>) {
   return (
     <div className='grid gap-4 lg:grid-cols-12'>
       <div className='lg:col-span-9'>{children}</div>

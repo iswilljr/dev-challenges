@@ -3,7 +3,7 @@ import { categories } from './categories'
 import { prisma } from './prisma'
 import type { ChallengeType } from '@prisma/client'
 
-export function getCategoryFromParams(params: { categoryId: string }) {
+export function getCategoryFromParams(params: CategoryParams) {
   const category = categories.find(category => category.id === params.categoryId)
 
   if (!category) notFound()
