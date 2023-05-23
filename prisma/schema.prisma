@@ -47,8 +47,6 @@ model User {
 
   accounts Account[]
   sessions Session[]
-
-  challenges Challenge[]
 }
 
 model VerificationToken {
@@ -60,22 +58,14 @@ model VerificationToken {
 }
 
 model Challenge {
-  id               String         @id @default(cuid())
-  title            String?
-  shortDescription String?
-  description      String?
-  stories          String[]       @default([])
-  level            Int?
-  type             ChallengeType?
-  demoURL          String?
-  sourceCodeURL    String?
-  userTitle        String?
-  userDescription  String?
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
-
-  user   User?   @relation(fields: [userId], references: [id])
-  userId String?
+  id           String        @id @default(cuid())
+  title        String
+  description  String
+  score        Int
+  type         ChallengeType
+  requirements String[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 }
 
 enum ChallengeType {
