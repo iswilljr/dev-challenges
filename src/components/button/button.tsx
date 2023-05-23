@@ -43,7 +43,7 @@ export function Button({
     >
       {loading && (
         <span className={iconClassName}>
-          <TbLoader className={cx('h-6 w-6 animate-spin', loadingClassName)} />
+          <TbLoader className={cx('h-5 w-5 animate-spin', loadingClassName)} />
         </span>
       )}
       {icon != null && !loading && <span className={iconClassName}>{icon}</span>}
