@@ -11,8 +11,8 @@ export default async function Category({ params }: { params: { categoryId: strin
   const challenges = await getCategoryChallenges(category.type)
 
   return (
-    <div className='space-y-8 py-8'>
-      <section className='mx-auto max-w-7xl px-4'>
+    <>
+      <section>
         <div className='rounded-md border border-gray-500 p-4'>
           <h2 className='text-xl font-semibold'>{category.title}</h2>
           <p className='mt-2'>{category.description}</p>
@@ -40,7 +40,7 @@ export default async function Category({ params }: { params: { categoryId: strin
           </div>
         </div>
       </section>
-      <section className='mx-auto max-w-7xl px-4'>
+      <section>
         <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {challenges.map(category => (
             <Card
@@ -53,6 +53,6 @@ export default async function Category({ params }: { params: { categoryId: strin
           ))}
         </div>
       </section>
-    </div>
+    </>
   )
 }

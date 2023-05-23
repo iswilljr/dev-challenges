@@ -22,7 +22,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
       <body className={cx('bg-zinc-700', inter.className)}>
         <AuthProvider>
           <Header />
-          <main>{children}</main>
+          <main className='mx-auto max-w-7xl space-y-8 px-4 py-8'>{children}</main>
           <Footer />
         </AuthProvider>
       </body>
