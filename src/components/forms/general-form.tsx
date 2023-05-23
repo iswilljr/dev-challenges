@@ -15,7 +15,9 @@ interface GeneralFormProps {
 const resolver = zodResolver(updateProfileSchema)
 
 export function GeneralForm({ user }: GeneralFormProps) {
-  const { trigger } = useSWRMutation('/api/profile', (url, data: { arg: UpdateProfile }) => axios.post(url, data.arg))
+  const { trigger, isMutating } = useSWRMutation('/api/profile', (url, data: { arg: UpdateProfile }) =>
+    axios.post(url, data.arg)
+  )
   const { onSubmit, getInputProps, onReset } = useForm<UpdateProfile>({
     initialValues: {
       name: user.name ?? '',
@@ -61,10 +63,12 @@ export function GeneralForm({ user }: GeneralFormProps) {
       />
       <Input id='email' label='Email' readOnly disabled value={user.email ?? ''} />
       <div className='!mt-4 flex items-center justify-end gap-2'>
-        <Button variant='secondary' type='reset'>
+        <Button disabled={isMutating} variant='secondary' type='reset'>
           Cancel
         </Button>
-        <Button type='submit'>Save</Button>
+        <Button loading={isMutating} type='submit'>
+          Save
+        </Button>
       </div>
     </form>
   )

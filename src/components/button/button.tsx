@@ -1,9 +1,12 @@
 import { cx } from '@/utils/cx'
+import { TbLoader } from 'react-icons/tb'
 
-interface ButtonProps extends React.HTMLAttributes<HTMLElement> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode
   variant?: 'primary' | 'secondary' | 'outlined' | 'danger'
   component?: any
+  loading?: boolean
+  loadingClassName?: string
 }
 
 export function Button({
@@ -11,13 +14,21 @@ export function Button({
   className,
   component,
   icon,
+  loading,
+  loadingClassName,
   variant = 'primary',
   ...props
 }: ButtonProps & Record<string, any>) {
   const Component: React.FC<any> = component ?? 'button'
 
+  const iconClassName = cx(children != null && 'mr-2')
+
   return (
     <Component
+      {...props}
+      aria-busy={loading}
+      // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+      disabled={loading || props.disabled}
       className={cx(
         'flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none disabled:opacity-50',
         {
@@ -29,9 +40,13 @@ export function Button({
         },
         className
       )}
-      {...props}
     >
-      {icon != null && <span className={cx(children != null && 'mr-2')}>{icon}</span>}
+      {loading && (
+        <span className={iconClassName}>
+          <TbLoader className={cx('h-6 w-6 animate-spin', loadingClassName)} />
+        </span>
+      )}
+      {icon != null && !loading && <span className={iconClassName}>{icon}</span>}
       {children}
     </Component>
   )
