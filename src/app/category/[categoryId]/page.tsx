@@ -1,5 +1,10 @@
-import { Categories } from '@/components/categories/categories'
+import { Card } from '@/components/card/card'
+import { categories } from '@/utils/categories'
 import { getCategoryChallenges, getCategoryFromParams } from '@/utils/get-category'
+
+export async function generateStaticParams() {
+  return categories.map(category => ({ categoryId: category.id }))
+}
 
 export default async function Category({ params }: { params: { categoryId: string } }) {
   const category = getCategoryFromParams(params)
@@ -36,7 +41,17 @@ export default async function Category({ params }: { params: { categoryId: strin
         </div>
       </section>
       <section className='mx-auto max-w-7xl px-4'>
-        <Categories challenges={challenges} />
+        <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+          {challenges.map(category => (
+            <Card
+              key={category.title}
+              href={`/challenge/${category.id}`}
+              image='/images/placeholder.jpg'
+              title={category.title ?? ''}
+              description={category.description ?? ''}
+            />
+          ))}
+        </div>
       </section>
     </div>
   )
