@@ -1,0 +1,88 @@
+{
+  "challenges": [
+    {
+      "title": "E-commerce Website",
+      "description": "Build a fully functional e-commerce website using React or Vue. The website should include features such as product listing, product details, shopping cart, user authentication, and payment integration.",
+      "score": 8,
+      "appRequirements": [
+        "Display a list of products with images, titles, and prices",
+        "Implement search and filtering functionality for products",
+        "Allow users to add products to a shopping cart and update quantities",
+        "Implement user authentication and registration",
+        "Integrate with a payment gateway for secure transactions",
+        "Include responsive design for mobile and desktop views",
+        "Implement a backend API to manage product data and user orders"
+      ]
+    },
+    {
+      "title": "Social Media Dashboard",
+      "description": "Create a social media dashboard using React, Vue, or Angular. The dashboard should display various social media metrics and provide insights on user engagement, follower growth, and content performance.",
+      "score": 7,
+      "appRequirements": [
+        "Fetch and display social media data from API endpoints",
+        "Implement charts and graphs to visualize metrics",
+        "Allow users to filter data by date range and social media platform",
+        "Provide insights and recommendations based on the data",
+        "Include user authentication to access personalized dashboards",
+        "Implement responsive design for different screen sizes",
+        "Optimize performance for handling large datasets"
+      ]
+    },
+    {
+      "title": "Task Management App",
+      "description": "Develop a task management application using React, Vue, or Angular. The app should allow users to create tasks, set deadlines, assign priorities, and track progress.",
+      "score": 6,
+      "appRequirements": [
+        "Create, update, and delete tasks",
+        "Set task deadlines and priorities",
+        "Implement drag-and-drop functionality for task organization",
+        "Allow users to assign tasks to team members",
+        "Include notifications and reminders for upcoming deadlines",
+        "Implement user authentication and access control",
+        "Store task data in a database for persistence"
+      ]
+    },
+    {
+      "title": "Weather Forecast App",
+      "description": "Build a weather forecast application using React, Vue, or Angular. The app should retrieve weather data from a public API and display current weather conditions and a multi-day forecast.",
+      "score": 5,
+      "appRequirements": [
+        "Fetch weather data from a weather API",
+        "Display current weather conditions (temperature, humidity, wind speed, etc.)",
+        "Show a multi-day forecast with daily temperature highs and lows",
+        "Implement search functionality for different locations",
+        "Include icons or images to represent weather conditions",
+        "Provide options to switch between Celsius and Fahrenheit",
+        "Optimize performance by caching API responses"
+      ]
+    },
+    {
+      "title": "Portfolio Website",
+      "description": "Create a personal portfolio website using HTML, CSS, and JavaScript. Showcase your skills, projects, and achievements in a visually appealing and responsive design.",
+      "score": 4,
+      "appRequirements": [
+        "Design and implement a visually appealing layout",
+        "Include sections for about me, skills, projects, and contact information",
+        "Display project images, descriptions, and links",
+        "Make the website responsive for different screen sizes",
+        "Implement smooth scrolling and interactive animations",
+        "Optimize the website for fast loading speed",
+        "Ensure accessibility by following best practices"
+      ]
+    },
+    {
+      "title": "Interactive Image Gallery",
+      "description": "Build an interactive image gallery using HTML, CSS, and JavaScript. The gallery should allow users to view and navigate through a collection of images with additional features like zooming, captions, and slideshow.",
+      "score": 3,
+      "appRequirements": [
+        "Display a grid of thumbnail images",
+        "Implement zoom functionality for images",
+        "Include captions or descriptions for each image",
+        "Allow users to navigate through images using next and previous buttons",
+        "Add a slideshow feature to automatically cycle through images",
+        "Ensure responsive design for different devices",
+        "Optimize image loading and performance"
+      ]
+    }
+  ]
+}

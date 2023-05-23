@@ -1,0 +1,101 @@
+{
+  "challenges": [
+    {
+      "title": "Task Manager",
+      "description": "Create a Task Manager application that allows users to create, update, and delete tasks. Use any front-end libraries of your choice. Create your API.",
+      "score": 5,
+      "appRequirements": [
+        "Create a new task",
+        "Edit an existing task",
+        "Delete a task",
+        "Mark a task as completed",
+        "Filter tasks by status (completed, incomplete)",
+        "Sort tasks by priority or due date",
+        "Set due dates for tasks",
+        "Display tasks in a list or grid view",
+        "Implement user authentication"
+      ]
+    },
+    {
+      "title": "E-commerce Store",
+      "description": "Create an E-commerce Store application that allows users to browse products, add items to a shopping cart, and complete the checkout process. Use any front-end libraries of your choice. Create your API.",
+      "score": 7,
+      "appRequirements": [
+        "Display a list of products",
+        "Implement search functionality to find products",
+        "Allow users to add items to a shopping cart",
+        "Calculate the total price of items in the shopping cart",
+        "Provide a checkout process with payment integration",
+        "Allow users to create accounts and login",
+        "Implement user authentication and authorization",
+        "Manage user orders and order history",
+        "Admin panel to manage products and orders"
+      ]
+    },
+    {
+      "title": "Social Media Platform",
+      "description": "Create a Social Media Platform application that allows users to create profiles, post updates, follow other users, and interact with posts. Use any front-end libraries of your choice. Create your API.",
+      "score": 9,
+      "appRequirements": [
+        "User registration and login",
+        "Create user profiles with profile pictures",
+        "Post updates and share content",
+        "Follow other users and view their posts",
+        "Like, comment, and share posts",
+        "Implement user notifications",
+        "Search functionality to find users and posts",
+        "Implement user privacy settings",
+        "Implement real-time updates using websockets",
+        "User messaging or chat functionality"
+      ]
+    },
+    {
+      "title": "Recipe Sharing App",
+      "description": "Create a Recipe Sharing application that allows users to share and discover recipes. Use any front-end libraries of your choice. Create your API.",
+      "score": 6,
+      "appRequirements": [
+        "Create and edit recipes with ingredients and instructions",
+        "Categorize recipes by cuisine or dietary preferences",
+        "Allow users to search for recipes by ingredients or keywords",
+        "Implement a rating and review system for recipes",
+        "User profiles to save favorite recipes",
+        "Share recipes on social media platforms",
+        "Provide a comment section for each recipe",
+        "Implement user authentication and authorization",
+        "Option to create private or public recipes"
+      ]
+    },
+    {
+      "title": "Job Board",
+      "description": "Create a Job Board application that allows users to post job listings, search for jobs, and apply for positions. Use any front-end libraries of your choice. Create your API.",
+      "score": 8,
+      "appRequirements": [
+        "Employer accounts to post job listings",
+        "Job search functionality with filters",
+        "Allow users to upload resumes and cover letters",
+        "Apply for jobs with a single click",
+        "Implement user profiles and job preferences",
+        "User notifications for job application status",
+        "Admin panel to manage job listings and user accounts",
+        "Email notifications for job application updates",
+        "Implement user authentication and authorization"
+      ]
+    },
+    {
+      "title": "Event Management System",
+      "description": "Create an Event Management System application that allows users to create, manage, and RSVP to events. Use any front-end libraries of your choice. Create your API.",
+      "score": 7,
+      "appRequirements": [
+        "Create and edit event details (title, date, time, location, description)",
+        "Allow users to RSVP to events",
+        "Display upcoming events and event details",
+        "Implement event search functionality",
+        "User profiles with event attendance history",
+        "Admin panel to manage events and user accounts",
+        "Allow users to create private or public events",
+        "Send event reminders and notifications",
+        "Implement user authentication and authorization"
+      ]
+    }
+  ]
+}
