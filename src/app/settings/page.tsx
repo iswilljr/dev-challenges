@@ -1,6 +1,8 @@
 import { GeneralForm } from '@/components/forms/general-form'
 import { getUserOrRedirect } from '@/utils/get-user'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
   const user = await getUserOrRedirect({ callbackUrl: '/settings' })
 
