@@ -7,7 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['avatars.githubusercontent.com', 'multimedia.infojobs.net'],
+    domains: ['avatars.githubusercontent.com'],
   },
 }
 
