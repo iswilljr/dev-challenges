@@ -8,7 +8,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   description: string
   descriptionMaxLines?: boolean
   href?: string
-  image: string
+  image?: string
   title: string
 }
 
@@ -39,17 +39,19 @@ export function Card({
         href={href}
         {...props}
       >
-        <div className='relative h-44 w-full overflow-hidden rounded-md bg-white'>
-          <Image
-            className={cx('mx-auto object-contain', { 'duration-300 group-hover:scale-110': href })}
-            sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            src={image}
-            alt={title}
-            fill
-          />
-        </div>
-        <h3 className='mt-4 text-lg font-semibold text-gray-200'>{title}</h3>
-        <div className={cx('text-md mb-4 mt-2 text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>
+        {image && (
+          <div className='relative h-44 w-full overflow-hidden rounded-md bg-white'>
+            <Image
+              className={cx('mx-auto object-contain', { 'duration-300 group-hover:scale-110': href })}
+              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+              src={image}
+              alt={title}
+              fill
+            />
+          </div>
+        )}
+        <h3 className={cx('text-lg font-semibold text-gray-200', image && 'mt-4')}>{title}</h3>
+        <div className={cx('text-md mt-2 text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>
           {description}
         </div>
         {bottomSection}

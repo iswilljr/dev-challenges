@@ -46,7 +46,6 @@ export default async function Category({ params }: { params: { categoryId: strin
             <Card
               key={category.title}
               href={`/challenge/${category.id}`}
-              image='/images/placeholder.jpg'
               title={category.title ?? ''}
               description={category.description ?? ''}
             />
