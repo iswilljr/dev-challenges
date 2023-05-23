@@ -1,6 +1,5 @@
 'use client'
 
-import { useSearchParams } from 'next/navigation'
 import { signIn, signOut } from 'next-auth/react'
 import { BsGithub } from 'react-icons/bs'
 import { Button } from '../button/button'
@@ -10,8 +9,6 @@ interface SignInButtonProps {
 }
 
 export function SignInButton({ status = 'unauthenticated' }: SignInButtonProps) {
-  const search = useSearchParams()
-
   return status === 'unauthenticated' ? (
     <Button
       className='w-40 text-xs'
@@ -20,7 +17,7 @@ export function SignInButton({ status = 'unauthenticated' }: SignInButtonProps) 
       onClick={() => {
         signIn('github', {
           redirect: false,
-          callbackUrl: search.get('callbackUrl') ?? window.location.href,
+          callbackUrl: new URLSearchParams(window.location.search).get('callbackUrl') ?? window.location.href,
         }).catch(err => console.error(err))
       }}
     >
