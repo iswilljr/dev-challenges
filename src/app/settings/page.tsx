@@ -1,8 +1,8 @@
 import { GeneralForm } from '@/components/forms/general-form'
-import { getUser } from '@/utils/get-user'
+import { getUserOrRedirect } from '@/utils/get-user'
 
 export default async function Home() {
-  const user = await getUser()
+  const user = await getUserOrRedirect({ callbackUrl: '/settings' })
 
   return (
     <>
