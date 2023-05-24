@@ -1,12 +1,15 @@
 import { notFound } from 'next/navigation'
 import { EditSolutionSubmissionForm } from '@/components/forms/edit-solution-submission'
-import { getUser } from '@/utils/get-user'
+import { getUserOrRedirect } from '@/utils/get-user'
 import { prisma } from '@/utils/prisma'
 import { getChallengeSolution } from '@/utils/solutions'
 
 export default async function ChallengeSubmission({ params }: ChallengePageParams) {
   const [user, challenge] = await Promise.all([
-    getUser(),
+    getUserOrRedirect({
+      redirect: `/challenge/${params.challengeId}`,
+      callbackUrl: `/challenge/${params.challengeId}/edit`,
+    }),
     prisma.challenge.findUnique({
       where: { id: params.challengeId },
     }),
