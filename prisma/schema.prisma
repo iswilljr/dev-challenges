@@ -44,6 +44,8 @@ model User {
   username        String    @unique
   twitterUsername String?
   website         String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
 
   accounts Account[]
   sessions Session[]
@@ -73,11 +75,13 @@ model Challenge {
 }
 
 model Solution {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   title       String
   description String?
   demoURL     String
   repoURL     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   challenge   Challenge @relation(fields: [challengeId], references: [id])
   challengeId String
