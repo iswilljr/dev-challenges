@@ -76,8 +76,8 @@ model Solution {
   id          String  @id @default(cuid())
   title       String
   description String?
-  demoURL     String?
-  repoURL     String?
+  demoURL     String
+  repoURL     String
 
   challenge   Challenge @relation(fields: [challengeId], references: [id])
   challengeId String
