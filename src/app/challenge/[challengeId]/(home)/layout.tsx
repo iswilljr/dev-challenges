@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/button/button'
+import { SubmitSolutionButton } from '@/components/button/submit-solution'
 import { prisma } from '@/utils/prisma'
 
 export async function generateStaticParams(): Promise<ChallengeParams[]> {
@@ -31,9 +32,7 @@ export default function ChallengeLayout({ children, params }: React.PropsWithChi
             >
               View Solutions
             </Button>
-            <Button component={Link} href={`/challenge/${params.challengeId}/edit`} className='w-full'>
-              Submit solution
-            </Button>
+            <SubmitSolutionButton challengeId={params.challengeId} />
           </div>
         </div>
       </div>
