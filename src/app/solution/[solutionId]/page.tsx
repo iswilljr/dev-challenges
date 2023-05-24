@@ -25,11 +25,7 @@ export default async function Solution({ params }: SolutionPageParams) {
     <>
       <section className='space-y-2'>
         <div className='flex items-center justify-between'>
-          <User
-            name={solutionUser.name ?? solutionUser.username}
-            profile={solutionUser.username}
-            profileImage={solutionUser.image}
-          />
+          <User {...solutionUser} />
           {solutionUser.id === user?.id && (
             <Button component={Link} href={`/challenge/${challenge.id}/edit`} variant='secondary'>
               Edit

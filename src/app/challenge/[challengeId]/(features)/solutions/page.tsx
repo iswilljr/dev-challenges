@@ -1,13 +1,17 @@
-import { Card } from '@/components/card/card'
-import { prisma } from '@/utils/prisma'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { prisma } from '@/utils/prisma'
+import { Solution } from '@/components/solution/solution'
 
 export default async function ChallengeSolutions({ params }: ChallengePageParams) {
   const challenge = await prisma.challenge.findUnique({
     where: { id: params.challengeId },
     include: {
-      solutions: true,
+      solutions: {
+        include: {
+          user: true,
+        },
+      },
     },
   })
 
@@ -18,17 +22,7 @@ export default async function ChallengeSolutions({ params }: ChallengePageParams
       <h2 className='text-xl font-semibold'>{challenge.title} Solutions</h2>
       <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {challenge.solutions.length > 0 ? (
-          challenge.solutions.map(solution => (
-            <Card
-              key={solution.id}
-              href={`/solution/${solution.id}`}
-              image={`/api/url2img?url=${solution.demoURL}`}
-              imageClassName='object-cover'
-              title={solution.title}
-              description={solution.description ?? ''}
-              descriptionMaxLines
-            />
-          ))
+          challenge.solutions.map(solution => <Solution key={solution.id} {...solution} />)
         ) : (
           <div className='space-y-4'>
             <p className='text-gray-400'>

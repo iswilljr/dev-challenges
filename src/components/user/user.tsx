@@ -1,16 +1,15 @@
 import Link from 'next/link'
 import { Avatar } from '../avatar/avatar'
+import type { User as UserType } from '@prisma/client'
 
-interface UserProps {
-  name: string
-  profile: string
-  profileImage?: string | null
-}
+interface UserProps extends UserType {}
 
-export function User({ name, profile, profileImage }: UserProps) {
+export function User({ name: _name, username, image }: UserProps) {
+  const name = _name ?? username
+
   return (
-    <Link className='flex items-center gap-2 hover:underline' href={`/profile/${profile}`}>
-      <Avatar src={profileImage} alt={`${name} profile`} width={28} height={28} />
+    <Link className='flex items-center gap-2 hover:underline' href={`/profile/${username}`}>
+      <Avatar src={image} alt={`${name} profile`} width={28} height={28} />
       <div className='text-sm font-semibold'>{name}</div>
     </Link>
   )
