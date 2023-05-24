@@ -9,7 +9,7 @@ export interface AvatarProps extends Omit<ImageProps, 'src'> {
 
 export function Avatar({ containerClassName, className, src, ...props }: AvatarProps) {
   return (
-    <div className={cx('h-9 w-9 rounded-md bg-gray-500', containerClassName)}>
+    <div className={cx('rounded-md bg-gray-500', containerClassName)}>
       <Image className={cx('rounded-md', className)} src={src ?? '/images/placeholder.jpg'} priority {...props} />
     </div>
   )

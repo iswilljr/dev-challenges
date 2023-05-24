@@ -10,14 +10,7 @@ interface UserProps {
 export function User({ name, profile, profileImage }: UserProps) {
   return (
     <Link className='flex items-center gap-2 hover:underline' href={`/profile/${profile}`}>
-      <Avatar
-        containerClassName='h-7 w-7'
-        className=''
-        src={profileImage}
-        alt={`${name} profile`}
-        width={28}
-        height={28}
-      />
+      <Avatar src={profileImage} alt={`${name} profile`} width={28} height={28} />
       <div className='text-sm font-semibold'>{name}</div>
     </Link>
   )
