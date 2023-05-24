@@ -65,7 +65,7 @@ model Challenge {
   id           String        @id @default(cuid())
   title        String
   description  String
-  score        Int
+  difficulty   Difficulty
   type         ChallengeType
   requirements String[]
   createdAt    DateTime      @default(now())
@@ -95,4 +95,12 @@ enum ChallengeType {
   frontend
   fullstack
   responsive
+}
+
+enum Difficulty {
+  easy
+  medium
+  intermediate
+  hard
+  extreme
 }

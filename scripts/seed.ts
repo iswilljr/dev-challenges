@@ -3,17 +3,35 @@ import frontend from '../.data/challenges/frontend.json'
 import fullstack from '../.data/challenges/fullstack.json'
 import responsive from '../.data/challenges/responsive.json'
 import { prisma } from '@/utils/prisma'
-import { type Prisma, ChallengeType } from '@prisma/client'
+import { type Prisma, ChallengeType, Difficulty } from '@prisma/client'
 
 type Challenge = Prisma.ChallengeCreateInput
 type JsonChallenge = (typeof frameworks | typeof frontend | typeof fullstack | typeof responsive)['challenges'][number]
+
+function isValueInRange(value: number) {
+  return (min: number, max: number) => value >= min && value <= max
+}
+
+function getDifficulty(score: number): Difficulty {
+  const inRange = isValueInRange(score)
+
+  return inRange(0, 2)
+    ? Difficulty.easy
+    : inRange(3, 4)
+    ? Difficulty.medium
+    : inRange(5, 6)
+    ? Difficulty.intermediate
+    : inRange(7, 8)
+    ? Difficulty.hard
+    : Difficulty.extreme
+}
 
 function jsonToChallenge(json: JsonChallenge, type: ChallengeType): Challenge {
   return {
     type,
     title: json.title,
     description: json.description,
-    score: json.score,
+    difficulty: getDifficulty(json.score),
     requirements: json.appRequirements,
   }
 }

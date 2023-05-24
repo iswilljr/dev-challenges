@@ -16,6 +16,9 @@ export async function getCategoryChallenges(type: ChallengeType) {
     where: {
       type,
     },
+    orderBy: {
+      difficulty: 'asc',
+    },
   })
 
   return challenges
