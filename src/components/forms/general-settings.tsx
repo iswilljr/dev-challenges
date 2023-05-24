@@ -2,6 +2,7 @@
 
 import axios from 'redaxios'
 import useSWRMutation from 'swr/mutation'
+import { useMemo } from 'react'
 import { useForm, zodResolver } from '@mantine/form'
 import { Button } from '../button/button'
 import { Input } from '../input/input'
@@ -18,7 +19,7 @@ export function GeneralForm({ user }: GeneralFormProps) {
   const { trigger, isMutating } = useSWRMutation('/api/profile', (url, data: { arg: UpdateProfile }) =>
     axios.post(url, data.arg)
   )
-  const { onSubmit, getInputProps, onReset } = useForm<UpdateProfile>({
+  const { onSubmit, getInputProps, onReset, isDirty } = useForm<UpdateProfile>({
     initialValues: {
       name: user.name ?? '',
       bio: user.bio ?? '',
@@ -42,6 +43,8 @@ export function GeneralForm({ user }: GeneralFormProps) {
     },
   })
 
+  const isInitialState = useMemo(() => !isDirty(), [isDirty])
+
   return (
     <form className='space-y-2' onReset={onReset} onSubmit={onSubmit(values => trigger(values))}>
       <Input id='name' label='Name' {...getInputProps('name')} />
@@ -63,10 +66,10 @@ export function GeneralForm({ user }: GeneralFormProps) {
       />
       <Input id='email' label='Email' readOnly disabled value={user.email ?? ''} />
       <div className='!mt-4 flex items-center justify-end gap-2'>
-        <Button disabled={isMutating} variant='secondary' type='reset'>
+        <Button disabled={isInitialState || isMutating} variant='secondary' type='reset'>
           Cancel
         </Button>
-        <Button loading={isMutating} type='submit'>
+        <Button disabled={isInitialState} loading={isMutating} type='submit'>
           Save
         </Button>
       </div>
