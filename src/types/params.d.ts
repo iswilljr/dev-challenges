@@ -10,5 +10,15 @@ interface ChallengeParams {
   challengeId: string
 }
 
+interface ProfileParams {
+  profileId: string
+}
+
+interface SolutionParams {
+  solutionId: string
+}
+
 type CategoryPageParams = WithParams<CategoryParams>
 type ChallengePageParams = WithParams<ChallengeParams>
+type ProfilePageParams = WithParams<ProfileParams>
+type SolutionPageParams = WithParams<SolutionParams>
