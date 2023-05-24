@@ -3,19 +3,22 @@
 import { cx } from '@/utils/cx'
 import { useRef } from 'react'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Record<string, unknown> {
   id: string
   label: string
+  component?: any
   error?: React.ReactNode
   leftSection?: React.ReactNode
   rightSection?: React.ReactNode
 }
 
-export function Input({ id, label, className, error, leftSection, rightSection, ...props }: InputProps) {
+export function Input({ id, label, component, className, error, leftSection, rightSection, ...props }: InputProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
+  const Component: React.FC<any> = component ?? 'input'
+
   return (
-    <div className={cx('', className)}>
+    <div className='input-root'>
       <label className='pointer-events-none block text-sm font-medium leading-6 text-gray-200' htmlFor={id}>
         {label}
       </label>
@@ -29,9 +32,12 @@ export function Input({ id, label, className, error, leftSection, rightSection, 
           )}
         >
           {leftSection}
-          <input
+          <Component
             ref={inputRef}
-            className='h-6 w-full border-none bg-transparent p-0 outline-none focus:outline-none disabled:cursor-not-allowed'
+            className={cx(
+              'h-6 w-full border-none bg-transparent p-0 outline-none focus:outline-none disabled:cursor-not-allowed',
+              className
+            )}
             id={id}
             name={id}
             {...props}
@@ -44,7 +50,7 @@ export function Input({ id, label, className, error, leftSection, rightSection, 
           })}
         >
           <div className='overflow-hidden'>
-            <p className='pt-1 text-xs text-red-300'>{error}</p>
+            <p className='h-4 pt-1 text-xs text-red-300'>{error}</p>
           </div>
         </div>
       </div>

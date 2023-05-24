@@ -14,7 +14,7 @@ export function Header() {
         <Logo withTitle />
         {data != null ? (
           <div>
-            <HeaderMenu profile={data.user?.image} />
+            <HeaderMenu profileImage={data.user.image} profile={data.user.username} />
           </div>
         ) : (
           <SignInButton status={status} />

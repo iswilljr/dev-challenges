@@ -1,26 +1,28 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { TbCaretDown, TbLogout, TbLayoutDashboard, TbSettings } from 'react-icons/tb'
+import { TbCaretDown, TbLogout, TbLayoutDashboard, TbSettings, TbUser } from 'react-icons/tb'
 import { Menu, Transition } from '@headlessui/react'
 import { SignOutButton } from '../auth/buttons'
 
 interface HeaderMenuProps {
-  profile?: string | null
+  profile: string
+  profileImage?: string | null
 }
 
 const links = [
+  { href: '/profile/:profileId', label: 'Profile', icon: TbUser },
   { href: '/dashboard', label: 'Dashboard', icon: TbLayoutDashboard },
   { href: '/settings', label: 'Settings', icon: TbSettings },
 ]
 
-export function HeaderMenu({ profile }: HeaderMenuProps) {
+export function HeaderMenu({ profile, profileImage }: HeaderMenuProps) {
   return (
     <Menu>
       <Menu.Button className='group flex items-center gap-1'>
         <div className='h-9 w-9 rounded-md bg-gray-500'>
           <Image
             className='rounded-md'
-            src={profile ?? '/images/placeholder.jpg'}
+            src={profileImage ?? '/images/placeholder.jpg'}
             alt='User Profile'
             width={36}
             height={36}
@@ -43,7 +45,7 @@ export function HeaderMenu({ profile }: HeaderMenuProps) {
               <Menu.Item key={href}>
                 <Link
                   className='flex w-full items-center rounded-md p-2 text-sm text-gray-200 hover:bg-zinc-500'
-                  href={href}
+                  href={href.replace(':profileId', profile)}
                 >
                   <Icon className='mr-2 h-5 w-5' />
                   {label}
