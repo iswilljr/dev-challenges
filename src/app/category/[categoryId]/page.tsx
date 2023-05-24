@@ -1,4 +1,4 @@
-import { Card } from '@/components/card/card'
+import { ChallengeCard } from '@/components/challenge/card'
 import { categories } from '@/utils/categories'
 import { getCategoryChallenges, getCategoryFromParams } from '@/utils/get-category'
 
@@ -42,13 +42,8 @@ export default async function Category({ params }: CategoryPageParams) {
       </section>
       <section>
         <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
-          {challenges.map(category => (
-            <Card
-              key={category.title}
-              href={`/challenge/${category.id}`}
-              title={category.title ?? ''}
-              description={category.description ?? ''}
-            />
+          {challenges.map(challenge => (
+            <ChallengeCard key={challenge.id} {...challenge} />
           ))}
         </div>
       </section>

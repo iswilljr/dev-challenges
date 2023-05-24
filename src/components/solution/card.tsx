@@ -1,12 +1,12 @@
 import { Card } from '../card/card'
 import { User } from '../user/user'
-import type { Solution as SolutionType, User as UserType } from '@prisma/client'
+import type { Solution, User as UserType } from '@prisma/client'
 
-interface SolutionProps extends SolutionType {
+interface SolutionCardProps extends Solution {
   user: UserType
 }
 
-export function Solution({ id, title, description, user }: SolutionProps) {
+export function SolutionCard({ id, title, description, user }: SolutionCardProps) {
   return (
     <Card
       animate
