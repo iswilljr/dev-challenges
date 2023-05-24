@@ -9,6 +9,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   descriptionMaxLines?: boolean
   href?: string
   image?: string
+  imageClassName?: string
   title: string
 }
 
@@ -22,6 +23,7 @@ export function Card({
   descriptionMaxLines,
   href,
   image,
+  imageClassName,
   title,
   className,
   ...props
@@ -42,7 +44,7 @@ export function Card({
         {image && (
           <div className='relative h-44 w-full overflow-hidden rounded-md bg-white'>
             <Image
-              className={cx('mx-auto object-contain', { 'duration-300 group-hover:scale-110': href })}
+              className={cx('mx-auto object-contain', { 'duration-300 group-hover:scale-110': href }, imageClassName)}
               sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
               src={image}
               alt={title}
