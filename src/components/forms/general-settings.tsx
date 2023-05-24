@@ -43,7 +43,7 @@ export function GeneralForm({ user }: GeneralFormProps) {
   })
 
   return (
-    <form className='mt-2 space-y-2' onReset={onReset} onSubmit={onSubmit(values => trigger(values))}>
+    <form className='space-y-2' onReset={onReset} onSubmit={onSubmit(values => trigger(values))}>
       <Input id='name' label='Name' {...getInputProps('name')} />
       <Input id='bio' label='Bio' {...getInputProps('bio')} />
       <Input id='website' label='Website' {...getInputProps('website')} />
