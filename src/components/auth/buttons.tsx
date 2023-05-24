@@ -16,7 +16,6 @@ export function SignInButton({ status = 'unauthenticated' }: SignInButtonProps) 
       variant='outlined'
       onClick={() => {
         signIn('github', {
-          redirect: false,
           callbackUrl: new URLSearchParams(window.location.search).get('callbackUrl') ?? window.location.href,
         }).catch(err => console.error(err))
       }}
@@ -31,5 +30,5 @@ export function SignInButton({ status = 'unauthenticated' }: SignInButtonProps) 
 }
 
 export function SignOutButton(props: React.ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button {...props} onClick={() => signOut({ redirect: false })} />
+  return <button {...props} onClick={() => signOut()} />
 }
