@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import { TbCaretDown, TbLogout, TbLayoutDashboard, TbSettings, TbUser } from 'react-icons/tb'
 import { Menu, Transition } from '@headlessui/react'
 import { SignOutButton } from '../auth/buttons'
+import { Avatar } from '../avatar/avatar'
 
 interface HeaderMenuProps {
   profile: string
@@ -19,16 +19,7 @@ export function HeaderMenu({ profile, profileImage }: HeaderMenuProps) {
   return (
     <Menu>
       <Menu.Button className='group flex items-center gap-1'>
-        <div className='h-9 w-9 rounded-md bg-gray-500'>
-          <Image
-            className='rounded-md'
-            src={profileImage ?? '/images/placeholder.jpg'}
-            alt='User Profile'
-            width={36}
-            height={36}
-            priority
-          />
-        </div>
+        <Avatar src={profileImage} alt='User Profile' width={36} height={36} />
         <TbCaretDown className='fill-gray-500 stroke-gray-500 transition group-hover:fill-gray-300 group-hover:stroke-gray-300 group-[[aria-expanded="true"]]:fill-gray-300 group-[[aria-expanded="true"]]:stroke-gray-300' />
       </Menu.Button>
       <Transition
