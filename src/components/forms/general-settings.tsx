@@ -3,6 +3,7 @@
 import axios from 'redaxios'
 import useSWRMutation from 'swr/mutation'
 import { useMemo } from 'react'
+import { toast } from 'sonner'
 import { useForm, zodResolver } from '@mantine/form'
 import { Button } from '../button/button'
 import { Input } from '../input/input'
@@ -16,8 +17,13 @@ interface GeneralFormProps {
 const resolver = zodResolver(updateProfileSchema)
 
 export function GeneralForm({ user }: GeneralFormProps) {
-  const { trigger, isMutating } = useSWRMutation('/api/profile', (url, data: { arg: UpdateProfile }) =>
-    axios.post(url, data.arg)
+  const { trigger, isMutating } = useSWRMutation(
+    '/api/profile',
+    (url, data: { arg: UpdateProfile }) => axios.post(url, data.arg),
+    {
+      onError: (err, key, config) => toast.error(err?.data?.message ?? 'Something went wrong'),
+      onSuccess: (data, key, config) => toast.success('Profile updated'),
+    }
   )
   const { onSubmit, getInputProps, onReset, isDirty } = useForm<UpdateProfile>({
     initialValues: {

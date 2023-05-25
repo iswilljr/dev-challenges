@@ -2,8 +2,9 @@
 
 import axios from 'redaxios'
 import useSWRMutation from 'swr/mutation'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { useMemo } from 'react'
+import { toast } from 'sonner'
 import { useForm, zodResolver } from '@mantine/form'
 import { type EditSolutionSubmission, editSolutionSubmissionSchema } from '@/utils/schemas'
 import { Button } from '../button/button'
@@ -18,8 +19,20 @@ const validate = zodResolver(editSolutionSubmissionSchema)
 
 export function EditSolutionSubmissionForm({ initialSolution }: EditSolutionSubmissionFormProps) {
   const params = useParams()
-  const { trigger, isMutating } = useSWRMutation('/api/solution', (url, data: { arg: EditSolutionSubmission }) =>
-    axios.post(url, data.arg)
+  const router = useRouter()
+  const { trigger, isMutating } = useSWRMutation(
+    '/api/solution',
+    (url, data: { arg: EditSolutionSubmission }) => axios.post<Solution>(url, data.arg),
+    {
+      onError: err => toast.error(err?.data?.message ?? 'Something went wrong'),
+      onSuccess: res =>
+        toast.success('Solution submitted', {
+          action: {
+            label: 'Go to solution',
+            onClick: () => router.push(`/solution/${res.data.id}`),
+          },
+        }),
+    }
   )
   const { onSubmit, getInputProps, onReset, isDirty } = useForm<EditSolutionSubmission>({
     initialValues: {
