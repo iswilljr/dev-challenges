@@ -1,9 +1,9 @@
 import { notFound } from 'next/navigation'
-import { categories } from './categories'
-import { prisma } from './prisma'
+import { categories } from '@/utils/categories'
+import { prisma } from '@/utils/prisma'
 import type { ChallengeType } from '@prisma/client'
 
-export function getCategoryFromParams(params: CategoryParams) {
+export function getSingleCategory(params: CategoryParams) {
   const category = categories.find(category => category.id === params.categoryId)
 
   if (!category) notFound()

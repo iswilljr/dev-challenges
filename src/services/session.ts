@@ -1,6 +1,6 @@
 import { redirect as NextRedirect } from 'next/navigation'
 import { getServerSession } from 'next-auth'
-import { authOptions } from './auth-options'
+import { authOptions } from '@/utils/auth-options'
 
 interface UserOrRedirectOptions {
   redirect?: string

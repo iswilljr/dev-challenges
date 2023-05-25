@@ -1,8 +1,8 @@
-import { prisma } from '@/utils/prisma'
+import { getSingleChallenge } from '@/services/challenge'
 import { notFound } from 'next/navigation'
 
 export default async function Challenge({ params }: ChallengePageParams) {
-  const challenges = await prisma.challenge.findUnique({ where: { id: params.challengeId } })
+  const challenges = await getSingleChallenge(params)
 
   if (!challenges) notFound()
 

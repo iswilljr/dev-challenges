@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { Button } from '@/components/button/button'
 import { SubmitSolutionButton } from '@/components/button/submit-solution'
-import { prisma } from '@/utils/prisma'
+import { getChallenges } from '@/services/challenge'
 
 export async function generateStaticParams(): Promise<ChallengeParams[]> {
-  const challenges = await prisma.challenge.findMany()
+  const challenges = await getChallenges()
 
   return challenges.map(challenge => ({ challengeId: challenge.id }))
 }

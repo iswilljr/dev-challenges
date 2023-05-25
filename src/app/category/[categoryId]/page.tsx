@@ -1,13 +1,13 @@
 import { ChallengeCard } from '@/components/challenge/card'
 import { categories } from '@/utils/categories'
-import { getCategoryChallenges, getCategoryFromParams } from '@/utils/get-category'
+import { getCategoryChallenges, getSingleCategory } from '@/services/category'
 
 export async function generateStaticParams() {
   return categories.map(category => ({ categoryId: category.id }))
 }
 
 export default async function Category({ params }: CategoryPageParams) {
-  const category = getCategoryFromParams(params)
+  const category = getSingleCategory(params)
   const challenges = await getCategoryChallenges(category.type)
 
   return (

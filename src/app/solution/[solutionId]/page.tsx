@@ -3,19 +3,13 @@ import { notFound } from 'next/navigation'
 import { User } from '@/components/user/user'
 import { Button } from '@/components/button/button'
 import { formatDistance } from '@/utils/dates'
-import { getUser } from '@/utils/get-user'
-import { prisma } from '@/utils/prisma'
+import { getUser } from '@/services/session'
+import { getFullSolution } from '@/services/solutions'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Solution({ params }: SolutionPageParams) {
-  const [solution, user] = await Promise.all([
-    prisma.solution.findUnique({
-      where: { id: params.solutionId },
-      include: { user: true, challenge: true },
-    }),
-    getUser(),
-  ])
+  const [solution, user] = await Promise.all([getFullSolution(params), getUser()])
 
   if (!solution) notFound()
 

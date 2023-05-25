@@ -1,5 +1,5 @@
 import { GeneralForm } from '@/components/forms/general-settings'
-import { getUserOrRedirect } from '@/utils/get-user'
+import { getUserOrRedirect } from '@/services/session'
 
 export const dynamic = 'force-dynamic'
 

@@ -1,19 +1,10 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { prisma } from '@/utils/prisma'
 import { SolutionCard } from '@/components/solution/card'
+import { getFullChallenge } from '@/services/challenge'
 
 export default async function ChallengeSolutions({ params }: ChallengePageParams) {
-  const challenge = await prisma.challenge.findUnique({
-    where: { id: params.challengeId },
-    include: {
-      solutions: {
-        include: {
-          user: true,
-        },
-      },
-    },
-  })
+  const challenge = await getFullChallenge(params)
 
   if (!challenge) return notFound()
 

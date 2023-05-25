@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth-options'
 import { prisma } from '@/utils/prisma'
 import { editSolutionSubmissionSchema } from '@/utils/schemas'
-import { getChallengeSolution } from '@/utils/solutions'
+import { getChallengeSolution } from '@/services/solutions'
 
 export async function POST(req: Request) {
   try {
