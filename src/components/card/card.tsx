@@ -36,7 +36,7 @@ export function Card({
       )}
     >
       {topSection && <div className='mb-2 px-4'>{topSection}</div>}
-      <Component className='flex flex-col gap-4 px-4 pb-4' href={href} {...props}>
+      <Component className='flex h-full flex-col gap-4 px-4 pb-4' href={href} {...props}>
         {image && (
           <div className={cx('relative h-44 w-full overflow-hidden rounded-md bg-white')}>
             <Image

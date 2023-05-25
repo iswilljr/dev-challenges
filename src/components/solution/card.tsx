@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { Difficulty, type Challenge, type Solution, type User as UserType } from '@prisma/client'
 import { formatDistance } from '@/utils/dates'
-import { Badge } from '../badge/badge'
+import { Badge, getBadgeColorFromChallengeDifficulty } from '../badge/badge'
 import { Card } from '../card/card'
 import { User } from '../user/user'
+import type { Challenge, Solution, User as UserType } from '@prisma/client'
 
 interface SolutionCardProps extends Solution {
   user: UserType
@@ -27,16 +27,7 @@ interface SolutionLargeCardProps extends Solution {
 
 export function SolutionLargeCard(solution: SolutionLargeCardProps) {
   const difficulty = solution.challenge.difficulty
-  const difficultyBadgeColor =
-    difficulty === Difficulty.easy
-      ? 'sky'
-      : difficulty === Difficulty.normal
-      ? 'green'
-      : difficulty === Difficulty.medium
-      ? 'yellow'
-      : difficulty === Difficulty.hard
-      ? 'red'
-      : 'purple'
+  const difficultyBadgeColor = getBadgeColorFromChallengeDifficulty(difficulty)
 
   return (
     <Link
