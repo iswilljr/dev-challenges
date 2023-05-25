@@ -22,7 +22,7 @@ export default async function Category({ params }: CategoryPageParams) {
               <ul className='mt-2'>
                 {category.interestingComments.map(comment => (
                   <li key={comment} className='list-inside list-disc'>
-                    <p className='inline-block'>{comment}</p>
+                    <p className='inline'>{comment}</p>
                   </li>
                 ))}
               </ul>

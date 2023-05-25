@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { cx } from '@/utils/cx'
-import { Skeleton } from '../skeleton/skeleton'
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   bottomSection?: React.ReactNode
@@ -12,10 +11,6 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   imageClassName?: string
   title: string
   topSection?: React.ReactNode
-}
-
-export interface CardSkeletonProps extends React.HTMLAttributes<HTMLDivElement> {
-  animate?: boolean
 }
 
 export function Card({
@@ -35,13 +30,13 @@ export function Card({
   return (
     <article
       className={cx(
-        'group relative h-full rounded-md border border-gray-500 bg-zinc-800/50 pt-4',
-        { 'duration-300 hover:border-gray-400/90 hover:bg-zinc-800/70': href },
+        'group relative h-full rounded-md border border-gray-500 bg-gray-800/50 pt-4',
+        { 'duration-300 hover:border-gray-400/90 hover:bg-gray-800/70': href },
         className
       )}
     >
       {topSection && <div className='mb-2 px-4'>{topSection}</div>}
-      <Component className='block px-4 pb-4' href={href} {...props}>
+      <Component className='flex flex-col gap-4 px-4 pb-4' href={href} {...props}>
         {image && (
           <div className={cx('relative h-44 w-full overflow-hidden rounded-md bg-white')}>
             <Image
@@ -53,34 +48,12 @@ export function Card({
             />
           </div>
         )}
-        <h3 className={cx('text-lg font-semibold text-gray-200', image && 'mt-4')}>{title}</h3>
-        <div className={cx('text-md mt-2 text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>
-          {description}
+        <div className='space-y-2'>
+          <h3 className='text-lg font-semibold text-gray-200'>{title}</h3>
+          <div className={cx('text-md text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>{description}</div>
         </div>
         {bottomSection}
       </Component>
     </article>
-  )
-}
-
-export function CardSkeleton({ animate, ...props }: CardSkeletonProps) {
-  const animateClass = animate && 'animate-pulse'
-
-  return (
-    <div
-      {...props}
-      role='status'
-      className={cx('group block h-full rounded-md border border-gray-500 bg-zinc-800/50 p-4', props.className)}
-    >
-      <Skeleton className={cx('h-44', animateClass)} />
-      <Skeleton className={cx('mt-4', animateClass)} />
-      <div className='text-md mt-2 text-gray-300/90'>
-        <Skeleton className={cx('mt-1 h-2', animateClass)} />
-        <Skeleton className={cx('mt-1 h-2', animateClass)} />
-        <Skeleton className={cx('mt-1 h-2', animateClass)} />
-        <Skeleton className={cx('mt-1 h-2', animateClass)} />
-        <Skeleton className={cx('mt-1 h-2', animateClass)} />
-      </div>
-    </div>
   )
 }
