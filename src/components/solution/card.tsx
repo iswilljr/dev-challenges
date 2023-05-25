@@ -30,9 +30,9 @@ export function SolutionLargeCard(solution: SolutionLargeCardProps) {
   const difficultyBadgeColor =
     difficulty === Difficulty.easy
       ? 'sky'
-      : difficulty === Difficulty.medium
+      : difficulty === Difficulty.normal
       ? 'green'
-      : difficulty === Difficulty.intermediate
+      : difficulty === Difficulty.medium
       ? 'yellow'
       : difficulty === Difficulty.hard
       ? 'red'

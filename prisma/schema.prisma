@@ -99,8 +99,8 @@ enum ChallengeType {
 
 enum Difficulty {
   easy
+  normal
   medium
-  intermediate
   hard
   extreme
 }

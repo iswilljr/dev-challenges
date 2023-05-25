@@ -18,9 +18,9 @@ function getDifficulty(score: number): Difficulty {
   return inRange(0, 2)
     ? Difficulty.easy
     : inRange(3, 4)
-    ? Difficulty.medium
+    ? Difficulty.normal
     : inRange(5, 6)
-    ? Difficulty.intermediate
+    ? Difficulty.medium
     : inRange(7, 8)
     ? Difficulty.hard
     : Difficulty.extreme
