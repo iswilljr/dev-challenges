@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-sonner-toaster] {
+  --bg-color: rgb(82 82 91);
+  --border-color: rgb(107 114 128);
+  --color: #fff;
+
+  --normal-bg: var(--bg-color) !important;
+  --normal-border: var(--border-color) !important;
+  --normal-text: var(--color) !important;
+
+  --success-bg: rgb(22 92 52) !important;
+  --success-border: rgb(22 163 74) !important;
+  --success-text: var(--color) !important;
+
+  --error-bg: rgb(126 27 27) !important;
+  --error-border: rgb(220 38 38) !important;
+  --error-text: var(--color) !important;
+}
+
+[data-sonner-toast]:not([data-type='success'], [data-type='error']) [data-close-button] {
+  background-color: var(--bg-color) !important;
+  border-color: var(--border-color) !important;
+  color: var(--color) !important;
+}
+
+[data-sonner-toast][data-type='success'] [data-icon] {
+  @apply text-green-400;
+}
+
+[data-sonner-toast][data-type='error'] [data-icon] {
+  @apply text-red-400;
+}
