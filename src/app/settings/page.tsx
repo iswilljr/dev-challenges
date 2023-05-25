@@ -1,10 +1,10 @@
 import { GeneralForm } from '@/components/forms/general-settings'
-import { getUserOrRedirect } from '@/services/session'
+import { getSessionUserOrRedirect } from '@/services/session'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Home() {
-  const user = await getUserOrRedirect({ callbackUrl: '/settings' })
+  const user = await getSessionUserOrRedirect({ callbackUrl: '/settings' })
 
   return (
     <>

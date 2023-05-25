@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation'
 import { EditSolutionSubmissionForm } from '@/components/forms/edit-solution-submission'
-import { getUserOrRedirect } from '@/services/session'
+import { getSessionUserOrRedirect } from '@/services/session'
 import { getChallengeSolution } from '@/services/solutions'
 import { getSingleChallenge } from '@/services/challenge'
 
 export default async function ChallengeSubmission({ params }: ChallengePageParams) {
   const [user, challenge] = await Promise.all([
-    getUserOrRedirect({
+    getSessionUserOrRedirect({
       redirect: `/challenge/${params.challengeId}`,
       callbackUrl: `/challenge/${params.challengeId}/edit`,
     }),

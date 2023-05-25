@@ -7,8 +7,8 @@ interface UserOrRedirectOptions {
   callbackUrl?: string
 }
 
-export async function getUserOrRedirect({ redirect = '/', callbackUrl }: UserOrRedirectOptions = {}) {
-  const user = await getUser()
+export async function getSessionUserOrRedirect({ redirect = '/', callbackUrl }: UserOrRedirectOptions = {}) {
+  const user = await getSessionUser()
 
   const redirectUrl = callbackUrl ? `${redirect}?callbackUrl=${callbackUrl}` : redirect
 
@@ -17,7 +17,7 @@ export async function getUserOrRedirect({ redirect = '/', callbackUrl }: UserOrR
   return user
 }
 
-export async function getUser() {
+export async function getSessionUser() {
   const session = await getServerSession(authOptions)
 
   return session?.user

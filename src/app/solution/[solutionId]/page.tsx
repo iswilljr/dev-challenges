@@ -3,13 +3,13 @@ import { notFound } from 'next/navigation'
 import { User } from '@/components/user/user'
 import { Button } from '@/components/button/button'
 import { formatDistance } from '@/utils/dates'
-import { getUser } from '@/services/session'
+import { getSessionUser } from '@/services/session'
 import { getFullSolution } from '@/services/solutions'
 
 export const dynamic = 'force-dynamic'
 
 export default async function Solution({ params }: SolutionPageParams) {
-  const [solution, user] = await Promise.all([getFullSolution(params), getUser()])
+  const [solution, user] = await Promise.all([getFullSolution(params), getSessionUser()])
 
   if (!solution) notFound()
 
