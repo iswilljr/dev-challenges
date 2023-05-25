@@ -9,7 +9,6 @@ interface SolutionCardProps extends Solution {
 export function SolutionCard({ id, title, description, user }: SolutionCardProps) {
   return (
     <Card
-      animate
       description={description ?? ''}
       descriptionMaxLines
       href={`/solution/${id}`}
