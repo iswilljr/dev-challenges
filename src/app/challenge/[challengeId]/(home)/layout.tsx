@@ -14,7 +14,7 @@ export default function ChallengeLayout({ children, params }: React.PropsWithChi
     <div className='grid gap-4 lg:grid-cols-12'>
       <div className='lg:col-span-9'>{children}</div>
       <div className='lg:col-span-3'>
-        <div className='space-y-4 rounded-md bg-zinc-800/50 p-4 shadow-md'>
+        <div className='space-y-4 rounded-md bg-gray-800/50 p-4 shadow-md'>
           <p>
             <strong className='text-xl font-semibold'>How to start</strong>
           </p>
