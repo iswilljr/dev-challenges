@@ -1,5 +1,9 @@
-import { formatDistance as dateFormatDistance } from 'date-fns'
+import formatDistanceStrict from 'date-fns/formatDistanceStrict'
 
 export function formatDistance(date: Date) {
-  return dateFormatDistance(date, new Date(), { addSuffix: true })
+  const formatted = formatDistanceStrict(date, new Date(), { addSuffix: true })
+
+  if (/(seconds?)(.+)$/.test(formatted)) return 'less than a minute ago'
+
+  return formatted
 }
