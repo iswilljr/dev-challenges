@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { Badge, getBadgeColorFromChallengeDifficulty } from '@/components/badge/badge'
 import { SolutionCard } from '@/components/solution/card'
 import { getFullChallenge } from '@/services/challenge'
 
@@ -8,9 +9,17 @@ export default async function ChallengeSolutions({ params }: ChallengePageParams
 
   if (!challenge) return notFound()
 
+  const difficultyBadgeColor = getBadgeColorFromChallengeDifficulty(challenge.difficulty)
+
   return (
     <section>
-      <h2 className='text-xl font-semibold'>{challenge.title} Solutions</h2>
+      <div className='flex items-center gap-2'>
+        <h1 className='text-2xl font-semibold'>{challenge.title}</h1>
+        <div className='flex items-center gap-1'>
+          <Badge>{challenge.type}</Badge>
+          <Badge color={difficultyBadgeColor}>{challenge.difficulty}</Badge>
+        </div>
+      </div>
       <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {challenge.solutions.length > 0 ? (
           challenge.solutions.map(solution => <SolutionCard key={solution.id} {...solution} />)

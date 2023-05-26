@@ -4,8 +4,8 @@ import { cx } from '@/utils/cx'
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   bottomSection?: React.ReactNode
-  description: string
-  descriptionMaxLines?: boolean
+  description?: string
+  descriptionClassName?: string
   href?: string
   image?: string
   imageClassName?: string
@@ -16,7 +16,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Card({
   bottomSection,
   description,
-  descriptionMaxLines,
+  descriptionClassName,
   href,
   image,
   imageClassName,
@@ -50,7 +50,7 @@ export function Card({
         )}
         <div className='space-y-2'>
           <h3 className='text-lg font-semibold text-gray-200'>{title}</h3>
-          <div className={cx('text-md text-gray-300/90', { 'line-clamp-4': descriptionMaxLines })}>{description}</div>
+          {description && <div className={cx('text-md text-gray-300/90', descriptionClassName)}>{description}</div>}
         </div>
         {bottomSection}
       </Component>

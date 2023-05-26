@@ -1,8 +1,10 @@
 import { Badge, getBadgeColorFromChallengeDifficulty } from '../badge/badge'
-import { Card } from '../card/card'
+import { Card, type CardProps } from '../card/card'
 import { type Challenge, Difficulty } from '@prisma/client'
 
-interface ChallengeCardProps extends Challenge {}
+interface ChallengeCardProps
+  extends Challenge,
+    Omit<CardProps, 'id' | 'href' | 'title' | 'description' | 'bottomSection'> {}
 
 const difficultyFillNumbers: Record<Difficulty, number> = {
   [Difficulty.easy]: 1,
@@ -12,7 +14,17 @@ const difficultyFillNumbers: Record<Difficulty, number> = {
   [Difficulty.extreme]: 5,
 }
 
-export function ChallengeCard({ id, title, description, difficulty }: ChallengeCardProps) {
+export function ChallengeCard({
+  createdAt,
+  description,
+  difficulty,
+  id,
+  requirements,
+  title,
+  type,
+  updatedAt,
+  ...cardProps
+}: ChallengeCardProps) {
   const fillColor = getBadgeColorFromChallengeDifficulty(difficulty)
   const fillNumber = difficultyFillNumbers[difficulty]
   const fillColorArray = [...Array(fillNumber)]
@@ -20,6 +32,7 @@ export function ChallengeCard({ id, title, description, difficulty }: ChallengeC
 
   return (
     <Card
+      {...cardProps}
       href={`/challenge/${id}`}
       title={title ?? ''}
       description={description ?? ''}

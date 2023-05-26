@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ChallengeCard } from '@/components/challenge/card'
 import { User } from '@/components/user/user'
 import { Button } from '@/components/button/button'
 import { formatDistance } from '@/utils/dates'
@@ -16,8 +17,8 @@ export default async function Solution({ params }: SolutionPageParams) {
   const { user: solutionUser, challenge } = solution
 
   return (
-    <>
-      <section className='space-y-2'>
+    <div className='grid grid-cols-1 gap-4 lg:grid-cols-4'>
+      <section className='space-y-2 lg:col-span-3'>
         <div className='flex items-center justify-between'>
           <User {...solutionUser} />
           {solutionUser.id === user?.id && (
@@ -27,7 +28,7 @@ export default async function Solution({ params }: SolutionPageParams) {
           )}
         </div>
         <div>
-          <h1 className='text-3xl font-semibold'>{challenge.title}</h1>
+          <h1 className='text-3xl font-semibold'>{solution.title}</h1>
           <div className='mt-0.5 text-sm text-gray-300'>
             <time dateTime={solution.updatedAt.toISOString()}>{formatDistance(solution.updatedAt)}</time>
           </div>
@@ -56,6 +57,12 @@ export default async function Solution({ params }: SolutionPageParams) {
           </div>
         </div>
       </section>
-    </>
+      <section className='col-span-1 row-start-1 lg:row-start-auto'>
+        <div className='space-y-2'>
+          <h2 className='text-xl font-semibold'>Challenge</h2>
+          <ChallengeCard {...solution.challenge} descriptionClassName='line-clamp-2' />
+        </div>
+      </section>
+    </div>
   )
 }
