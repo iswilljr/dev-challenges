@@ -35,7 +35,8 @@ export function Button({
           'bg-sky-600 ring-1 ring-sky-700 hover:bg-sky-600/80 focus-visible:outline-sky-600': variant === 'primary',
           'bg-gray-600 ring-1 ring-gray-700 hover:bg-gray-600/80 focus-visible:outline-gray-600':
             variant === 'secondary',
-          'bg-transparent text-gray-200 ring-1 ring-gray-300/50 hover:ring-gray-400': variant === 'outlined',
+          'bg-transparent text-gray-200 ring-1 ring-gray-300/50 hover:ring-gray-400 focus-visible:outline-gray-400':
+            variant === 'outlined',
           'bg-red-500 ring-1 ring-red-600 hover:bg-red-500/80 focus-visible:outline-red-500': variant === 'danger',
         },
         className
