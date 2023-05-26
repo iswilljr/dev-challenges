@@ -3,6 +3,10 @@ import { getSessionUserOrRedirect } from '@/services/session'
 
 export const dynamic = 'force-dynamic'
 
+export const metadata = {
+  title: 'Settings',
+}
+
 export default async function Home() {
   const user = await getSessionUserOrRedirect({ callbackUrl: '/settings' })
 

@@ -4,6 +4,18 @@ import { EditSolutionSubmissionForm } from '@/components/forms/edit-solution-sub
 import { getSessionUserOrRedirect } from '@/services/session'
 import { getChallengeSolution } from '@/services/solutions'
 import { getSingleChallenge } from '@/services/challenge'
+import type { Metadata } from 'next'
+
+export const dynamic = 'force-dynamic'
+
+export async function generateMetadata({ params }: ChallengePageParams): Promise<Metadata> {
+  const challenge = await getSingleChallenge(params)
+
+  return {
+    title: `${challenge?.title ?? ''} Challenge Submission`,
+    description: challenge?.description,
+  }
+}
 
 export default async function ChallengeSubmission({ params }: ChallengePageParams) {
   const [user, challenge] = await Promise.all([

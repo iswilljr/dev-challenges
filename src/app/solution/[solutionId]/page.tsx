@@ -1,31 +1,40 @@
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ChallengeCard } from '@/components/challenge/card'
+import { EditSolutionButton } from '@/components/button/edit-solution'
 import { User } from '@/components/user/user'
 import { Button } from '@/components/button/button'
 import { formatDistance } from '@/utils/dates'
-import { getSessionUser } from '@/services/session'
 import { getFullSolution } from '@/services/solutions'
+import type { Metadata } from 'next'
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
+export const dynamicParams = true
+export const revalidate = 10
+export const generateStaticParams = () => []
+
+export async function generateMetadata({ params }: SolutionPageParams): Promise<Metadata> {
+  const solution = await getFullSolution(params)
+
+  return {
+    title: `${solution?.title ?? 'Solution'} by ${solution?.user.name ?? solution?.user.username ?? 'User'}`,
+    // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+    description: solution?.description || solution?.challenge.description,
+  }
+}
 
 export default async function Solution({ params }: SolutionPageParams) {
-  const [solution, user] = await Promise.all([getFullSolution(params), getSessionUser()])
+  const solution = await getFullSolution(params)
 
   if (!solution) notFound()
 
-  const { user: solutionUser, challenge } = solution
+  const { user, challenge } = solution
 
   return (
     <div className='grid grid-cols-1 gap-4 lg:grid-cols-4'>
       <section className='space-y-2 lg:col-span-3'>
         <div className='flex items-center justify-between'>
-          <User {...solutionUser} />
-          {solutionUser.id === user?.id && (
-            <Button component={Link} href={`/challenge/${challenge.id}/edit`} variant='secondary'>
-              Edit
-            </Button>
-          )}
+          <User {...user} />
+          <EditSolutionButton user={user} challenge={challenge} />
         </div>
         <div>
           <h1 className='text-3xl font-semibold'>{solution.title}</h1>

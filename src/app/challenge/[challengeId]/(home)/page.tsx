@@ -1,5 +1,15 @@
 import { getSingleChallenge } from '@/services/challenge'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: ChallengePageParams): Promise<Metadata> {
+  const challenge = await getSingleChallenge(params)
+
+  return {
+    title: `${challenge?.title ?? 'Challenge'}`,
+    description: challenge?.description,
+  }
+}
 
 export default async function Challenge({ params }: ChallengePageParams) {
   const challenges = await getSingleChallenge(params)

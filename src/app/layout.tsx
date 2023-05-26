@@ -4,12 +4,16 @@ import { Toaster } from '@/components/toaster/toaster'
 import { Header } from '@/components/header/header'
 import { Footer } from '@/components/footer/footer'
 import { cx } from '@/utils/cx'
+import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Dev Challenges',
+export const metadata: Metadata = {
+  title: {
+    default: 'Dev Challenges',
+    template: '%s | Dev Challenges',
+  },
   description:
     'Web Development Resources that help you to become a Web Developer by working with Real-life projects and practices.',
 }

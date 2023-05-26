@@ -1,6 +1,16 @@
 import { ChallengeCard } from '@/components/challenge/card'
 import { categories } from '@/utils/categories'
 import { getCategoryChallenges, getSingleCategory } from '@/services/category'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: CategoryPageParams): Promise<Metadata> {
+  const category = categories.find(category => category.id === params.categoryId)
+
+  return {
+    title: category?.title,
+    description: category?.description,
+  }
+}
 
 export async function generateStaticParams() {
   return categories.map(category => ({ categoryId: category.id }))

@@ -4,8 +4,20 @@ import { UserCard } from '@/components/user/card'
 import { getFullUserSolutions } from '@/services/solutions'
 import { getSessionUser } from '@/services/session'
 import { getSingleUser } from '@/services/user'
+import type { Metadata } from 'next'
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'force-static'
+export const dynamicParams = true
+export const revalidate = 10
+export const generateStaticParams = () => []
+
+export async function generateMetadata({ params }: ProfilePageParams): Promise<Metadata> {
+  const user = await getSingleUser(params)
+
+  return {
+    title: `${user?.name ?? user?.username ?? 'Profile'}`,
+  }
+}
 
 export default async function Profile({ params }: ProfilePageParams) {
   const [user, sessionUser] = await Promise.all([getSingleUser(params), getSessionUser()])

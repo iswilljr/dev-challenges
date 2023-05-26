@@ -2,7 +2,22 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Badge, getBadgeColorFromChallengeDifficulty } from '@/components/badge/badge'
 import { SolutionCard } from '@/components/solution/card'
-import { getFullChallenge } from '@/services/challenge'
+import { getFullChallenge, getSingleChallenge } from '@/services/challenge'
+import type { Metadata } from 'next'
+
+export const dynamic = 'force-static'
+export const dynamicParams = true
+export const revalidate = 10
+export const generateStaticParams = () => []
+
+export async function generateMetadata({ params }: ChallengePageParams): Promise<Metadata> {
+  const challenge = await getSingleChallenge(params)
+
+  return {
+    title: `${challenge?.title ?? ''} Challenge Solutions`,
+    description: challenge?.description,
+  }
+}
 
 export default async function ChallengeSolutions({ params }: ChallengePageParams) {
   const challenge = await getFullChallenge(params)
