@@ -15,5 +15,5 @@ module.exports = {
       },
     },
   },
-  plugins: [withTailwindForms({ strategy: 'class' })],
+  plugins: [withTailwindForms({ strategy: 'class' }), require('@tailwindcss/typography')],
 }

@@ -3,9 +3,9 @@
 import { cx } from '@/utils/cx'
 import { useRef } from 'react'
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Record<string, unknown> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>, Record<string, unknown> {
   id: string
-  label: string
+  label: React.ReactNode
   component?: any
   error?: React.ReactNode
   leftSection?: React.ReactNode
@@ -19,10 +19,10 @@ export function Input({ id, label, component, className, error, leftSection, rig
 
   return (
     <div className='input-root'>
-      <label className='pointer-events-none block text-sm font-medium leading-6 text-gray-200' htmlFor={id}>
+      <label className='pointer-events-none flex items-center text-sm font-medium leading-6 text-gray-200' htmlFor={id}>
         {label}
       </label>
-      <div className='mt-1'>
+      <div className='relative mt-1'>
         <div
           onClick={() => inputRef.current?.focus()}
           aria-disabled={props.disabled}

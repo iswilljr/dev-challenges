@@ -3,6 +3,7 @@ import { ChallengeCard } from '@/components/challenge/card'
 import { EditSolutionButton } from '@/components/button/edit-solution'
 import { User } from '@/components/user/user'
 import { Button } from '@/components/button/button'
+import { MarkdownPreview } from '@/components/markdowm/preview'
 import { formatDistance } from '@/utils/dates'
 import { getFullSolution } from '@/services/solutions'
 import type { Metadata } from 'next'
@@ -42,7 +43,7 @@ export default async function Solution({ params }: SolutionPageParams) {
             <time dateTime={solution.updatedAt.toISOString()}>{formatDistance(solution.updatedAt)}</time>
           </div>
         </div>
-        <p>{solution.description}</p>
+        {solution.description && <MarkdownPreview content={solution.description} />}
         <div className='!mt-4 rounded-md border border-gray-500'>
           <div className='flex items-center justify-between gap-2 rounded-t-md bg-zinc-800/50 p-4'>
             <h2 className='text-xl font-semibold'>Preview</h2>

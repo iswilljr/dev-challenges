@@ -9,6 +9,7 @@ import { useForm, zodResolver } from '@mantine/form'
 import { type EditSolutionSubmission, editSolutionSubmissionSchema } from '@/utils/schemas'
 import { Button } from '../button/button'
 import { Input } from '../input/input'
+import { MarkdownInput } from '../input/markdown'
 import type { Solution } from '@prisma/client'
 
 interface EditSolutionSubmissionFormProps {
@@ -50,14 +51,7 @@ export function EditSolutionSubmissionForm({ initialSolution }: EditSolutionSubm
   return (
     <form className='space-y-2' onReset={onReset} onSubmit={onSubmit(values => trigger(values))}>
       <Input id='title' label='Title' {...getInputProps('title')} />
-      <Input
-        rows={4}
-        id='description'
-        label='Description'
-        component='textarea'
-        className='h-auto resize-none'
-        {...getInputProps('description')}
-      />
+      <MarkdownInput rows={4} id='description' label='Description (markdown)' {...getInputProps('description')} />
       <Input id='demoURL' label='Demo URL' {...getInputProps('demoURL')} />
       <Input id='repoURL' label='Repository URL' {...getInputProps('repoURL')} />
       <div className='!mt-4 flex items-center justify-end gap-2'>
