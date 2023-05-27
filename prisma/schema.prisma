@@ -87,7 +87,7 @@ model Solution {
 
   comments Comment[]
 
-  challenge   Challenge @relation(fields: [challengeId], references: [id])
+  challenge   Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
   challengeId String
 
   user   User   @relation(fields: [userId], references: [id])
