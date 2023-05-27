@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { Button } from '../button/button'
 import { Input, type InputProps } from './input'
 import { cx } from '@/utils/cx'
-import { MarkdownPreview } from '../markdowm/preview'
+import { MarkdownPreview } from '../markdown/preview'
 
 export interface MarkdownInputProps extends InputProps {}
 
@@ -14,7 +14,7 @@ export function MarkdownInput({ label, ...props }: MarkdownInputProps) {
 
   return (
     <div
-      className={cx(' [&_.input-root>div]:!mt-0', {
+      className={cx('[&_.input-root>div]:!mt-0', {
         '[&_.form-input_textarea]:hidden': selected !== 'input',
         '[&_.form-input]:rounded-tl-none': selected === 'input',
       })}
@@ -29,7 +29,7 @@ export function MarkdownInput({ label, ...props }: MarkdownInputProps) {
         }
         label={
           <>
-            <span className=''>
+            <span>
               <Button
                 className={cx(
                   'pointer-events-auto mb-0.5 rounded-b-none rounded-t-sm duration-150 hover:ring-gray-300/50',
@@ -46,6 +46,7 @@ export function MarkdownInput({ label, ...props }: MarkdownInputProps) {
             </span>
             <span>
               <Button
+                disabled={!props.value}
                 className={cx(
                   'pointer-events-auto mb-0.5 rounded-b-none rounded-t-sm duration-150 hover:ring-gray-300/50',
                   {

@@ -41,7 +41,7 @@ export function UserCard({ user, editProfileButton }: UserCardProps) {
       />
       <div>
         <h1 className='font-bold'>
-          <span className='block text-2xl'>{user.name ?? user.username}</span>
+          <span className='block break-words text-2xl'>{user.name ?? user.username}</span>
           {user.name && <span className='block text-xl text-gray-400'>{user.username}</span>}
         </h1>
       </div>
