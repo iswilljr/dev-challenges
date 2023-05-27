@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation'
 import { ChallengeCard } from '@/components/challenge/card'
+import { CommentsProvider } from '@/components/comment/provider'
 import { EditSolutionButton } from '@/components/button/edit-solution'
 import { SolutionDemoPreview } from '@/components/solution/demo-preview'
+import { SolutionFeedback } from '@/components/solution/feddback'
 import { User } from '@/components/user/user'
-import { MarkdownPreview } from '@/components/markdowm/preview'
+import { MarkdownPreview } from '@/components/markdown/preview'
 import { formatDistance } from '@/utils/dates'
 import { getFullSolution } from '@/services/solutions'
 import type { Metadata } from 'next'
@@ -33,7 +35,7 @@ export default async function Solution({ params }: SolutionPageParams) {
   return (
     <div className='grid grid-cols-1 gap-4 lg:grid-cols-4'>
       <section className='space-y-2 lg:col-span-3'>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between first:[&_a]:max-w-[70%]'>
           <User {...user} />
           <EditSolutionButton user={user} challenge={challenge} />
         </div>
@@ -45,6 +47,9 @@ export default async function Solution({ params }: SolutionPageParams) {
         </div>
         {solution.description && <MarkdownPreview content={solution.description} />}
         <SolutionDemoPreview {...solution} />
+        <CommentsProvider comments={solution.comments}>
+          <SolutionFeedback solution={solution} challenge={solution.challenge} />
+        </CommentsProvider>
       </section>
       <section className='col-span-1 row-start-1 lg:row-start-auto'>
         <div className='space-y-2'>

@@ -2,6 +2,13 @@ import { z } from 'zod'
 
 export type UpdateProfile = z.infer<typeof updateProfileSchema>
 export type EditSolutionSubmission = z.infer<typeof editSolutionSubmissionSchema>
+export type CreateComment = z.infer<typeof createCommentSchema>
+
+export const createCommentSchema = z.object({
+  id: z.string().trim(),
+  comment: z.string().trim().min(3, 'Should have at least 3 characters'),
+  isReply: z.boolean().optional(),
+})
 
 export const updateProfileSchema = z.object({
   name: z.string().trim().min(1, 'Should have at least 1 characters'),

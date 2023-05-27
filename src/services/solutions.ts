@@ -22,7 +22,20 @@ export async function getChallengeSolution({ challengeId, userId }: ChallengeSol
 export async function getFullSolution({ solutionId }: SolutionParams) {
   const solution = await prisma.solution.findUnique({
     where: { id: solutionId },
-    include: { user: true, challenge: true },
+    include: {
+      user: true,
+      challenge: true,
+      comments: {
+        orderBy: { createdAt: 'asc' },
+        include: {
+          user: true,
+          replies: {
+            include: { user: true },
+            orderBy: { createdAt: 'asc' },
+          },
+        },
+      },
+    },
   })
 
   return solution
