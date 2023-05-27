@@ -30,10 +30,10 @@ export default async function ChallengeSolutions({ params }: ChallengePageParams
     <section>
       <div className='flex items-center gap-2'>
         <h1 className='text-2xl font-semibold'>{challenge.title}</h1>
-        <div className='flex items-center gap-1'>
+        <h2 className='flex items-center gap-1'>
           <Badge>{challenge.type}</Badge>
           <Badge color={difficultyBadgeColor}>{challenge.difficulty}</Badge>
-        </div>
+        </h2>
       </div>
       <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {challenge.solutions.length > 0 ? (

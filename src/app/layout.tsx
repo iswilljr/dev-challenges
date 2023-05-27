@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang='en' className='[color-scheme:dark]'>
+    <html lang='en' className='scroll-p-20 [color-scheme:dark]'>
       <head>
         <link rel='icon' href='/favicon.svg' />
       </head>

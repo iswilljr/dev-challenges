@@ -50,7 +50,7 @@ export function MarkdownInput({ label, ...props }: MarkdownInputProps) {
                 className={cx(
                   'pointer-events-auto mb-0.5 rounded-b-none rounded-t-sm duration-150 hover:ring-gray-300/50',
                   {
-                    'text-gray-400 ring-transparent hover:text-gray-200 hover:ring-transparent': selected !== 'preview',
+                    'text-gray-300 ring-transparent hover:text-gray-200 hover:ring-transparent': selected !== 'preview',
                   }
                 )}
                 variant='outlined'

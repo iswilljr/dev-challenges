@@ -40,7 +40,7 @@ export default async function Solution({ params }: SolutionPageParams) {
           <EditSolutionButton user={user} challenge={challenge} />
         </div>
         <div>
-          <h1 className='text-3xl font-semibold'>{solution.title}</h1>
+          <h1 className='break-words text-3xl font-semibold'>{solution.title}</h1>
           <div className='mt-0.5 text-sm text-gray-300'>
             <time dateTime={solution.updatedAt.toISOString()}>{formatDistance(solution.updatedAt)}</time>
           </div>

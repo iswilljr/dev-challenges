@@ -49,8 +49,10 @@ export function Card({
           </div>
         )}
         <div className='space-y-2'>
-          <h3 className='text-lg font-semibold text-gray-200'>{title}</h3>
-          {description && <div className={cx('text-md text-gray-300/90', descriptionClassName)}>{description}</div>}
+          <h3 className='line-clamp-2 break-words text-lg font-semibold text-gray-200'>{title}</h3>
+          {description && (
+            <div className={cx('text-md break-words text-gray-300/90', descriptionClassName)}>{description}</div>
+          )}
         </div>
         {bottomSection}
       </Component>

@@ -32,7 +32,7 @@ export function Button({
       className={cx(
         'flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:cursor-not-allowed disabled:select-none disabled:opacity-50',
         {
-          'bg-sky-600 ring-1 ring-sky-700 hover:bg-sky-600/80 focus-visible:outline-sky-600': variant === 'primary',
+          'bg-sky-700 ring-1 ring-sky-800 hover:bg-sky-700/80 focus-visible:outline-sky-700': variant === 'primary',
           'bg-gray-600 ring-1 ring-gray-700 hover:bg-gray-600/80 focus-visible:outline-gray-600':
             variant === 'secondary',
           'bg-transparent text-gray-200 ring-1 ring-gray-300/50 hover:ring-gray-400 focus-visible:outline-gray-400':
