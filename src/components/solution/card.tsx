@@ -3,7 +3,7 @@ import { formatDistance } from '@/utils/dates'
 import { Badge, getBadgeColorFromChallengeDifficulty } from '../badge/badge'
 import { Card } from '../card/card'
 import { User } from '../user/user'
-import type { Challenge, Solution, User as UserType } from '@prisma/client'
+import type { Challenge, Comment, Solution, User as UserType } from '@prisma/client'
 
 interface SolutionCardProps extends Solution {
   user: UserType
@@ -26,6 +26,10 @@ interface SolutionLargeCardProps extends Solution {
   challenge: Challenge
 }
 
+interface SolutionFeedbackCardProps extends Comment {
+  solution: Solution
+}
+
 export function SolutionLargeCard(solution: SolutionLargeCardProps) {
   const difficulty = solution.challenge.difficulty
   const difficultyBadgeColor = getBadgeColorFromChallengeDifficulty(difficulty)
@@ -46,6 +50,23 @@ export function SolutionLargeCard(solution: SolutionLargeCardProps) {
           <Badge color={difficultyBadgeColor}>{difficulty}</Badge>
         </div>
         <div className='text-end text-sm text-gray-400'>{formatDistance(solution.createdAt)}</div>
+      </div>
+    </Link>
+  )
+}
+
+export function SolutionFeedbackCard({ content, createdAt, id, solution }: SolutionFeedbackCardProps) {
+  return (
+    <Link
+      className='block space-y-2 rounded-md border border-gray-500 bg-gray-800/50 p-4 duration-300 hover:border-gray-400/90 hover:bg-gray-800/70'
+      href={`/solution/${solution.id}#feedback-comment-${id}`}
+    >
+      <div className='line-clamp-4'>{content}</div>
+      <div className='flex flex-wrap items-center justify-between gap-2'>
+        <div className='max-w-[50%] text-gray-300'>
+          <Badge className='max-w-full truncate'>{solution.title}</Badge>
+        </div>
+        <div className='text-sm text-gray-400'>{formatDistance(createdAt)}</div>
       </div>
     </Link>
   )

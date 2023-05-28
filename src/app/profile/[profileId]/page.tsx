@@ -1,9 +1,8 @@
 import { notFound } from 'next/navigation'
-import { SolutionLargeCard } from '@/components/solution/card'
+import { SolutionFeedbackCard, SolutionLargeCard } from '@/components/solution/card'
 import { UserCard } from '@/components/user/card'
-import { getFullUserSolutions } from '@/services/solutions'
 import { getSessionUser } from '@/services/session'
-import { getSingleUser } from '@/services/user'
+import { getFullUserProfile, getSingleUser } from '@/services/user'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-static'
@@ -20,31 +19,43 @@ export async function generateMetadata({ params }: ProfilePageParams): Promise<M
 }
 
 export default async function Profile({ params }: ProfilePageParams) {
-  const [user, sessionUser] = await Promise.all([getSingleUser(params), getSessionUser()])
+  const [user, sessionUser] = await Promise.all([getFullUserProfile(params), getSessionUser()])
 
   if (!user) notFound()
-
-  const userSolutions = await getFullUserSolutions({ userId: user.id })
 
   return (
     <div className='grid grid-cols-1 gap-4 md:grid-cols-4'>
       <section className='sm:col-span-1'>
         <UserCard user={user} editProfileButton={sessionUser?.id === user.id} />
       </section>
-      <section className='space-y-2 sm:col-span-3'>
-        <h2 className='text-xl font-semibold'>Solutions</h2>
-        {userSolutions.length > 0 ? (
-          <ul className='space-y-2'>
-            {userSolutions.map(solution => (
-              <li key={solution.id}>
-                <SolutionLargeCard {...solution} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className='text-lg text-gray-400'>No solutions yet.</div>
+      <div className='space-y-2 sm:col-span-3'>
+        <section className='space-y-2'>
+          <h2 className='text-xl font-semibold'>Solutions</h2>
+          {user.solutions.length > 0 ? (
+            <ul className='space-y-2'>
+              {user.solutions.map(solution => (
+                <li key={solution.id}>
+                  <SolutionLargeCard {...solution} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <div className='text-lg text-gray-400'>No solutions yet.</div>
+          )}
+        </section>
+        {user.comments.length > 0 && (
+          <section className='space-y-2'>
+            <h2 className='text-xl font-semibold'>Feedback</h2>
+            <ul className='space-y-2'>
+              {user.comments.map(comment => (
+                <li key={comment.id}>
+                  <SolutionFeedbackCard {...comment} />
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
-      </section>
+      </div>
     </div>
   )
 }
