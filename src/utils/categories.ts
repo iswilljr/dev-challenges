@@ -48,25 +48,6 @@ export const categories: Category[] = [
     ],
   },
   {
-    id: 'frameworks',
-    type: ChallengeType.frameworks,
-    title: 'Web Application Frameworks',
-    description:
-      'Explore popular frontend frameworks like React, Angular, or Vue.js, and learn how to build scalable and efficient web applications using these frameworks.',
-    image: '/images/categories/frameworks.png',
-    href: '/category/frameworks',
-    interestingComments: [
-      'Learn a popular framework (e.g., React, Angular, or Vue.js)',
-      'Learn the core concepts and features of the framework',
-      'Build a small project using the framework',
-    ],
-    guide: [
-      'Utilize the chosen framework to develop the web application',
-      'Follow best practices and conventions of the framework',
-      'Handle data binding, component communication, and routing',
-    ],
-  },
-  {
     id: 'fullstack',
     type: ChallengeType.fullstack,
     title: 'Full-Stack Development',

@@ -1,97 +1,105 @@
 {
   "challenges": [
     {
-      "title": "Weather App",
-      "description": "Create a weather application that displays the current weather conditions for a given location. The application should be responsive and provide an intuitive user interface.",
-      "score": 6,
+      "title": "Landing Page",
+      "description": "Create a responsive landing page for a product or service. The page should adapt and display properly on different devices.",
+      "score": 3,
       "appRequirements": [
-        "Display the current temperature",
-        "Show the weather conditions (e.g., sunny, cloudy, rainy)",
-        "Include a search bar to enter a location",
-        "Fetch weather data from an API",
-        "Handle errors if the API request fails",
-        "Display additional weather information (e.g., humidity, wind speed)",
-        "Use appropriate icons to represent weather conditions",
-        "Implement responsive design for different screen sizes"
+        "Include a header section with a logo and navigation menu",
+        "Display key features or selling points of the product/service",
+        "Include a call-to-action button or form for users to take action",
+        "Ensure the layout adjusts smoothly and maintains readability on various screen sizes"
       ]
     },
     {
-      "title": "E-commerce Product Listing",
-      "description": "Build a responsive product listing page for an e-commerce website. The page should display products in a visually appealing manner and provide filtering and sorting options for the user.",
-      "score": 7,
+      "title": "Image Gallery",
+      "description": "Build an image gallery that showcases a collection of photos. The gallery should be responsive and offer a pleasant user experience.",
+      "score": 4,
       "appRequirements": [
-        "Display product images, titles, prices, and ratings",
-        "Implement filtering options (e.g., by category, price range)",
-        "Include sorting options (e.g., by price, popularity)",
-        "Implement pagination or infinite scrolling for large product lists",
-        "Allow users to add products to a shopping cart or wishlist",
-        "Implement responsive design for various devices",
-        "Include search functionality to find products",
-        "Provide a smooth and intuitive user experience"
+        "Display multiple images in a grid layout",
+        "Enable users to click on an image to view it in a larger size",
+        "Include navigation arrows or indicators to switch between images",
+        "Allow users to filter images based on categories or tags"
       ]
     },
     {
-      "title": "Task Management App",
-      "description": "Create a responsive task management application that allows users to create, update, and organize tasks. The app should provide a clean and user-friendly interface for managing tasks effectively.",
-      "score": 8,
+      "title": "Interactive Form",
+      "description": "Develop an interactive form that collects user input and provides real-time feedback or validation.",
+      "score": 5,
       "appRequirements": [
-        "Allow users to create new tasks with a title and description",
-        "Implement task prioritization and due dates",
-        "Enable task editing and marking tasks as completed",
-        "Provide options for organizing tasks into categories or projects",
-        "Implement drag-and-drop functionality for task reordering",
-        "Include search and filtering options for finding specific tasks",
-        "Implement responsive design for different screen sizes",
-        "Store tasks persistently (e.g., using a backend or local storage)",
-        "Ensure a seamless and intuitive user experience"
+        "Include various input fields such as text, email, password, and dropdowns",
+        "Validate form fields and display error messages for invalid input",
+        "Implement real-time validation as users type or interact with the form",
+        "Provide visual indicators for valid and invalid input",
+        "Include a submit button that triggers form submission and displays a success message"
       ]
     },
     {
-      "title": "Recipe Finder",
-      "description": "Develop a responsive recipe finder application that allows users to search for recipes based on ingredients or dish names. The app should display detailed recipe information and provide a visually appealing interface.",
-      "score": 7,
+      "title": "Mobile Menu",
+      "description": "Create a responsive mobile menu that expands and collapses smoothly on smaller screens.",
+      "score": 3,
       "appRequirements": [
-        "Include a search bar to enter ingredients or dish names",
-        "Fetch recipe data from an API",
-        "Display recipe images, titles, and cooking instructions",
-        "Provide filtering options (e.g., by cuisine, dietary restrictions)",
-        "Allow users to save favorite recipes or create a personal recipe collection",
-        "Implement responsive design for various devices",
-        "Include rating and review functionality for recipes",
-        "Enable sharing recipes through social media",
-        "Ensure a smooth and enjoyable user experience"
+        "Design and implement a mobile-friendly navigation menu",
+        "Ensure the menu collapses into a burger icon or similar on smaller screens",
+        "Implement smooth transitions or animations for menu expansion and collapse",
+        "Allow users to navigate to different sections or pages within the menu",
+        "Ensure the menu remains accessible and functional on various mobile devices"
       ]
     },
     {
-      "title": "Fitness Tracking App",
-      "description": "Create a responsive fitness tracking application that helps users monitor their fitness activities and progress. The app should provide features for tracking workouts, setting goals, and visualizing fitness data.",
-      "score": 8,
+      "title": "Animated Slideshow",
+      "description": "Build an animated slideshow that showcases a series of images or content in an engaging way.",
+      "score": 4,
       "appRequirements": [
-        "Implement user registration and authentication",
-        "Allow users to log workouts and track exercise details",
-        "Provide features for setting fitness goals and tracking progress",
-        "Include visualizations and charts to display fitness data",
-        "Implement notifications or reminders for workout sessions",
-        "Include social features (e.g., following other users, sharing achievements)",
-        "Implement responsive design for different screen sizes",
-        "Store user data securely and privately",
-        "Ensure a seamless and motivating user experience"
+        "Display multiple slides with images and accompanying text",
+        "Implement smooth transitions or animations between slides",
+        "Include navigation arrows or indicators for users to navigate through the slideshow",
+        "Allow users to pause or resume the slideshow",
+        "Make the slideshow responsive to different screen sizes"
       ]
     },
     {
-      "title": "Event Management Platform",
-      "description": "Build a responsive event management platform that allows users to create, manage, and promote events. The platform should provide features for event registration, ticketing, and attendee management.",
-      "score": 9,
+      "title": "Pricing Table",
+      "description": "Create a pricing table that presents different pricing plans or packages for a product or service.",
+      "score": 4,
       "appRequirements": [
-        "Implement user registration and authentication",
-        "Allow event organizers to create and manage events",
-        "Provide features for event promotion and ticketing",
-        "Enable event registration and ticket purchase for attendees",
-        "Implement attendee management functionalities (e.g., check-in, attendee list)",
-        "Include event search and filtering options",
-        "Implement responsive design for various devices",
-        "Include social sharing and integration with social media platforms",
-        "Ensure a smooth and efficient event management experience"
+        "Display multiple pricing options with details such as features and prices",
+        "Ensure the table adjusts and maintains readability on different devices",
+        "Highlight the recommended or most popular pricing plan",
+        "Include call-to-action buttons for users to select a pricing option"
+      ]
+    },
+    {
+      "title": "Newsletter Subscription",
+      "description": "Develop a newsletter subscription form that allows users to subscribe to a newsletter.",
+      "score": 3,
+      "appRequirements": [
+        "Include input fields for users to enter their name and email address",
+        "Implement validation to ensure the email address is in the correct format",
+        "Provide visual feedback on successful subscription or validation errors",
+        "Make the newsletter subscription form responsive and visually appealing"
+      ]
+    },
+    {
+      "title": "Quiz Application",
+      "description": "Create a quiz application that presents multiple-choice questions and provides instant feedback to users.",
+      "score": 5,
+      "appRequirements": [
+        "Include a set of multiple-choice questions with options",
+        "Allow users to select an answer for each question",
+        "Provide immediate feedback on whether the selected answer is correct or incorrect",
+        "Display the final score and percentage at the end of the quiz"
+      ]
+    },
+    {
+      "title": "Countdown Timer",
+      "description": "Build a countdown timer that counts down to a specific date or event.",
+      "score": 3,
+      "appRequirements": [
+        "Allow users to set a target date and time for the countdown",
+        "Display the remaining time in days, hours, minutes, and seconds",
+        "Implement a visually appealing design for the countdown",
+        "Ensure the countdown timer adjusts and remains functional on different screen sizes"
       ]
     }
   ]

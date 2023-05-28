@@ -1,4 +1,3 @@
-import frameworks from '../.data/challenges/frameworks.json'
 import frontend from '../.data/challenges/frontend.json'
 import fullstack from '../.data/challenges/fullstack.json'
 import responsive from '../.data/challenges/responsive.json'
@@ -6,7 +5,7 @@ import { prisma } from '@/utils/prisma'
 import { type Prisma, ChallengeType, Difficulty } from '@prisma/client'
 
 type Challenge = Prisma.ChallengeCreateInput
-type JsonChallenge = (typeof frameworks | typeof frontend | typeof fullstack | typeof responsive)['challenges'][number]
+type JsonChallenge = (typeof frontend | typeof fullstack | typeof responsive)['challenges'][number]
 
 function isValueInRange(value: number) {
   return (min: number, max: number) => value >= min && value <= max
@@ -39,15 +38,12 @@ function jsonToChallenge(json: JsonChallenge, type: ChallengeType): Challenge {
 async function createChallenges() {
   const frontendChallenges = frontend.challenges.map(challenge => jsonToChallenge(challenge, ChallengeType.frontend))
   const fullstackChallenges = fullstack.challenges.map(challenge => jsonToChallenge(challenge, ChallengeType.fullstack))
-  const frameworkChallenges = frameworks.challenges.map(challenge =>
-    jsonToChallenge(challenge, ChallengeType.frameworks)
-  )
   const responsiveChallenges = responsive.challenges.map(challenge =>
     jsonToChallenge(challenge, ChallengeType.responsive)
   )
 
   await prisma.challenge.createMany({
-    data: [...frameworkChallenges, ...frontendChallenges, ...fullstackChallenges, ...responsiveChallenges],
+    data: [...frontendChallenges, ...fullstackChallenges, ...responsiveChallenges],
   })
 }
 

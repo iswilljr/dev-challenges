@@ -1,45 +1,39 @@
 {
   "challenges": [
     {
-      "title": "E-commerce Website",
-      "description": "Build a fully functional e-commerce website using React or Vue. The website should include features such as product listing, product details, shopping cart, user authentication, and payment integration.",
-      "score": 8,
+      "title": "Currency Converter",
+      "description": "Build a currency converter using HTML, CSS, and JavaScript. Users should be able to convert amounts between different currencies.",
+      "score": 4,
       "appRequirements": [
-        "Display a list of products with images, titles, and prices",
-        "Implement search and filtering functionality for products",
-        "Allow users to add products to a shopping cart and update quantities",
-        "Implement user authentication and registration",
-        "Integrate with a payment gateway for secure transactions",
-        "Include responsive design for mobile and desktop views",
-        "Implement a backend API to manage product data and user orders"
+        "Design and implement a user interface with input fields for amount and currency",
+        "Fetch currency exchange rates from an API",
+        "Perform currency conversions based on user input",
+        "Display the converted amount",
+        "Include responsive design for optimal viewing on different devices"
       ]
     },
     {
-      "title": "Social Media Dashboard",
-      "description": "Create a social media dashboard using React, Vue, or Angular. The dashboard should display various social media metrics and provide insights on user engagement, follower growth, and content performance.",
-      "score": 7,
+      "title": "Color Palette Generator",
+      "description": "Create a color palette generator using HTML, CSS, and JavaScript. Users should be able to generate random color palettes and copy the color codes.",
+      "score": 3,
       "appRequirements": [
-        "Fetch and display social media data from API endpoints",
-        "Implement charts and graphs to visualize metrics",
-        "Allow users to filter data by date range and social media platform",
-        "Provide insights and recommendations based on the data",
-        "Include user authentication to access personalized dashboards",
-        "Implement responsive design for different screen sizes",
-        "Optimize performance for handling large datasets"
+        "Design and implement a user interface to display color palettes",
+        "Generate random color codes for each palette",
+        "Allow users to copy the color codes to the clipboard",
+        "Include responsive design for optimal viewing on different devices"
       ]
     },
     {
-      "title": "Task Management App",
-      "description": "Develop a task management application using React, Vue, or Angular. The app should allow users to create tasks, set deadlines, assign priorities, and track progress.",
-      "score": 6,
+      "title": "Movie Recommendation App",
+      "description": "Develop a movie recommendation application using React, Vue, or Angular. Users should be able to search for movies, view movie details, and get recommendations based on their preferences.",
+      "score": 5,
       "appRequirements": [
-        "Create, update, and delete tasks",
-        "Set task deadlines and priorities",
-        "Implement drag-and-drop functionality for task organization",
-        "Allow users to assign tasks to team members",
-        "Include notifications and reminders for upcoming deadlines",
-        "Implement user authentication and access control",
-        "Store task data in a database for persistence"
+        "Design and implement a user interface with a search input for movies",
+        "Fetch movie data from an API based on user input",
+        "Display a list of matching movies with images and titles",
+        "Allow users to click on a movie to view its detailed information",
+        "Implement a recommendation algorithm based on user preferences",
+        "Include responsive design for optimal viewing on different devices"
       ]
     },
     {
@@ -52,8 +46,7 @@
         "Show a multi-day forecast with daily temperature highs and lows",
         "Implement search functionality for different locations",
         "Include icons or images to represent weather conditions",
-        "Provide options to switch between Celsius and Fahrenheit",
-        "Optimize performance by caching API responses"
+        "Provide options to switch between Celsius and Fahrenheit"
       ]
     },
     {
@@ -65,9 +58,7 @@
         "Include sections for about me, skills, projects, and contact information",
         "Display project images, descriptions, and links",
         "Make the website responsive for different screen sizes",
-        "Implement smooth scrolling and interactive animations",
-        "Optimize the website for fast loading speed",
-        "Ensure accessibility by following best practices"
+        "Implement smooth scrolling and interactive animations"
       ]
     },
     {
@@ -79,9 +70,42 @@
         "Implement zoom functionality for images",
         "Include captions or descriptions for each image",
         "Allow users to navigate through images using next and previous buttons",
-        "Add a slideshow feature to automatically cycle through images",
-        "Ensure responsive design for different devices",
-        "Optimize image loading and performance"
+        "Add a slideshow feature to automatically cycle through images"
+      ]
+    },
+    {
+      "title": "Music Player",
+      "description": "Create a simple music player using HTML, CSS, and JavaScript. Users should be able to play, pause, and skip songs.",
+      "score": 3,
+      "appRequirements": [
+        "Design and implement a user interface with play, pause, and skip buttons",
+        "Include a playlist of songs",
+        "Allow users to play, pause, and skip songs",
+        "Display the current song's information"
+      ]
+    },
+    {
+      "title": "Tic-Tac-Toe Game",
+      "description": "Develop a tic-tac-toe game using React, Vue, or Angular. Users should be able to play against the computer or another player.",
+      "score": 5,
+      "appRequirements": [
+        "Design and implement a game board to display the tic-tac-toe grid",
+        "Allow users to make moves and determine the winner",
+        "Implement a computer opponent for single-player mode"
+      ]
+    },
+    {
+      "title": "Interactive Pricing Component",
+      "description": "Build an interactive pricing component using HTML, CSS, and JavaScript. Create a pricing card that allows users to switch between different pricing plans and see the updated details and pricing.",
+      "score": 4,
+      "appRequirements": [
+        "Display pricing plans with features and prices",
+        "Implement a toggle switch to switch between plans",
+        "Update the displayed details and pricing based on the selected plan",
+        "Add smooth transitions for plan switching",
+        "Include a call-to-action button for signing up",
+        "Make the component responsive for different screen sizes",
+        "Ensure accessibility by using proper markup and keyboard navigation"
       ]
     }
   ]

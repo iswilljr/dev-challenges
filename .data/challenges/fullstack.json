@@ -1,35 +1,34 @@
 {
   "challenges": [
     {
-      "title": "Task Manager",
-      "description": "Create a Task Manager application that allows users to create, update, and delete tasks. Use any front-end libraries of your choice. Create your API.",
-      "score": 5,
+      "title": "Music Streaming Platform",
+      "description": "Create a Music Streaming Platform that allows users to search, play, and save their favorite songs. Use any front-end libraries of your choice. Create your API.",
+      "score": 9,
       "appRequirements": [
-        "Create a new task",
-        "Edit an existing task",
-        "Delete a task",
-        "Mark a task as completed",
-        "Filter tasks by status (completed, incomplete)",
-        "Sort tasks by priority or due date",
-        "Set due dates for tasks",
-        "Display tasks in a list or grid view",
-        "Implement user authentication"
+        "User registration and login",
+        "Search and browse songs by artist, album, or genre",
+        "Create and manage playlists",
+        "Play songs with playback controls (play, pause, skip)",
+        "Implement audio streaming and buffering",
+        "Save favorite songs and create a personalized library",
+        "Implement user-generated playlists and recommendations",
+        "Implement user authentication and authorization",
+        "Admin panel to manage songs, artists, and user accounts"
       ]
     },
     {
-      "title": "E-commerce Store",
-      "description": "Create an E-commerce Store application that allows users to browse products, add items to a shopping cart, and complete the checkout process. Use any front-end libraries of your choice. Create your API.",
-      "score": 7,
+      "title": "Online Learning Platform",
+      "description": "Create an Online Learning Platform that offers courses, lectures, and educational resources. Use any front-end libraries of your choice. Create your API.",
+      "score": 9,
       "appRequirements": [
-        "Display a list of products",
-        "Implement search functionality to find products",
-        "Allow users to add items to a shopping cart",
-        "Calculate the total price of items in the shopping cart",
-        "Provide a checkout process with payment integration",
-        "Allow users to create accounts and login",
-        "Implement user authentication and authorization",
-        "Manage user orders and order history",
-        "Admin panel to manage products and orders"
+        "Course catalog with categories and search functionality",
+        "Enrollment and progress tracking for students",
+        "Display course materials (lectures, videos, assignments)",
+        "Implement discussion forums for students and instructors",
+        "Provide course completion certificates",
+        "Implement user profiles and learning analytics",
+        "Admin panel to manage courses, instructors, and user accounts",
+        "Implement user authentication and authorization"
       ]
     },
     {
@@ -66,35 +65,75 @@
       ]
     },
     {
-      "title": "Job Board",
-      "description": "Create a Job Board application that allows users to post job listings, search for jobs, and apply for positions. Use any front-end libraries of your choice. Create your API.",
+      "title": "Chat Application",
+      "description": "Create a real-time Chat Application that allows users to send messages and engage in group chats. Use any front-end libraries of your choice. Create your API.",
       "score": 8,
       "appRequirements": [
-        "Employer accounts to post job listings",
-        "Job search functionality with filters",
-        "Allow users to upload resumes and cover letters",
-        "Apply for jobs with a single click",
-        "Implement user profiles and job preferences",
-        "User notifications for job application status",
-        "Admin panel to manage job listings and user accounts",
-        "Email notifications for job application updates",
+        "User registration and login",
+        "Create and join chat rooms",
+        "Send and receive real-time messages",
+        "Display online/offline status of users",
+        "Implement typing indicators",
+        "Enable file/image sharing in chats",
+        "Implement message search functionality",
+        "Admin panel to manage users and chat rooms",
         "Implement user authentication and authorization"
       ]
     },
     {
-      "title": "Event Management System",
-      "description": "Create an Event Management System application that allows users to create, manage, and RSVP to events. Use any front-end libraries of your choice. Create your API.",
-      "score": 7,
+      "title": "Survey Application",
+      "description": "Create a Survey Application that allows users to create and conduct surveys. Use any front-end libraries of your choice. Create your API.",
+      "score": 5,
       "appRequirements": [
-        "Create and edit event details (title, date, time, location, description)",
-        "Allow users to RSVP to events",
-        "Display upcoming events and event details",
-        "Implement event search functionality",
-        "User profiles with event attendance history",
-        "Admin panel to manage events and user accounts",
-        "Allow users to create private or public events",
-        "Send event reminders and notifications",
+        "Create and customize surveys with different question types",
+        "Allow users to distribute surveys and collect responses",
+        "Display survey results with charts or graphs",
+        "Implement user registration and login",
+        "User profiles to track survey participation",
+        "Admin panel to manage surveys and user accounts",
         "Implement user authentication and authorization"
+      ]
+    },
+    {
+      "title": "E-commerce Website",
+      "description": "Develop an e-commerce website with product listings, shopping cart functionality, and checkout process.",
+      "score": 8,
+      "appRequirements": [
+        "Display a list of products with details like name, price, and image",
+        "Allow users to add products to a shopping cart",
+        "Implement a search feature to filter products",
+        "Enable sorting and pagination for the product list",
+        "Provide user authentication and account management functionality",
+        "Implement a secure checkout process with payment integration",
+        "Include order history and tracking for users"
+      ]
+    },
+    {
+      "title": "Contact Form with Email Sending",
+      "description": "Create a contact form that allows users to send messages via email. Use HTML, CSS, and JavaScript to validate the form inputs and send the form data to an email address.",
+      "score": 5,
+      "appRequirements": [
+        "Design and implement a contact form with name, email, and message fields",
+        "Validate that the name field is not empty",
+        "Validate that the email field contains a valid email address",
+        "Validate that the message field is not empty",
+        "Display error messages for invalid input fields",
+        "Send the form data to a specified email address",
+        "Provide a success message after successful form submission"
+      ]
+    },
+    {
+      "title": "Todo List Application",
+      "description": "Develop a simple todo list application using HTML, CSS, and JavaScript. The app should allow users to add, edit, and delete tasks with a checkbox to mark them as complete.",
+      "score": 6,
+      "appRequirements": [
+        "Display a list of tasks with checkboxes",
+        "Allow users to add new tasks",
+        "Implement editing functionality for task names",
+        "Provide the ability to delete tasks",
+        "Toggle the checkbox to mark a task as complete",
+        "Include a counter for the number of remaining tasks",
+        "Persist the tasks using local storage"
       ]
     }
   ]
