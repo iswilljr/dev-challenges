@@ -38,14 +38,14 @@ export function SolutionLargeCard(solution: SolutionLargeCardProps) {
       <div className='flex items-center justify-between gap-4'>
         <h3 className='truncate text-lg font-semibold'>{solution.title}</h3>
       </div>
-      <div className='line-clamp-4'>{solution.description}</div>
+      <div className='line-clamp-4 break-words'>{solution.description}</div>
       <div className='flex flex-col items-end justify-end gap-2 sm:flex-row sm:items-center sm:justify-between'>
         <div className='flex flex-wrap items-end justify-end gap-1 text-gray-300 sm:items-center sm:justify-start'>
           <Badge>{solution.challenge.title}</Badge>
           <Badge color='gray'>{solution.challenge.type}</Badge>
           <Badge color={difficultyBadgeColor}>{difficulty}</Badge>
         </div>
-        <div className='text-end text-sm text-gray-400'>{formatDistance(solution.updatedAt)}</div>
+        <div className='text-end text-sm text-gray-400'>{formatDistance(solution.createdAt)}</div>
       </div>
     </Link>
   )

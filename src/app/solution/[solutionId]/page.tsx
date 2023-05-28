@@ -4,9 +4,8 @@ import { CommentsProvider } from '@/components/comment/provider'
 import { EditSolutionButton } from '@/components/button/edit-solution'
 import { SolutionDemoPreview } from '@/components/solution/demo-preview'
 import { SolutionFeedback } from '@/components/solution/feddback'
-import { User } from '@/components/user/user'
 import { MarkdownPreview } from '@/components/markdown/preview'
-import { formatDistance } from '@/utils/dates'
+import { UserTime } from '@/components/user/time'
 import { getFullSolution } from '@/services/solutions'
 import type { Metadata } from 'next'
 
@@ -36,15 +35,10 @@ export default async function Solution({ params }: SolutionPageParams) {
     <div className='grid grid-cols-1 gap-4 lg:grid-cols-4'>
       <section className='space-y-2 lg:col-span-3'>
         <div className='flex items-center justify-between first:[&_a]:max-w-[70%]'>
-          <User {...user} />
+          <UserTime user={user} date={solution.createdAt} timeClassName='text-gray-300' />
           <EditSolutionButton user={user} challenge={challenge} />
         </div>
-        <div>
-          <h1 className='break-words text-3xl font-semibold'>{solution.title}</h1>
-          <div className='mt-0.5 text-sm text-gray-300'>
-            <time dateTime={solution.updatedAt.toISOString()}>{formatDistance(solution.updatedAt)}</time>
-          </div>
-        </div>
+        <h1 className='break-words text-3xl font-semibold'>{solution.title}</h1>
         {solution.description && <MarkdownPreview content={solution.description} />}
         <SolutionDemoPreview {...solution} />
         <CommentsProvider comments={solution.comments}>

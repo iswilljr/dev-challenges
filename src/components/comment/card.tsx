@@ -1,8 +1,7 @@
 import { cx } from '@/utils/cx'
-import { formatDistance } from '@/utils/dates'
 import { CommentReplyBox } from './reply-box'
 import { MarkdownPreview } from '../markdown/preview'
-import { User } from '../user/user'
+import { UserTime } from '../user/time'
 import type { User as UserType } from '@prisma/client'
 import type { FullComment } from '@/types/comments'
 
@@ -47,15 +46,11 @@ export function CommentCard(props: CommentCardProps) {
     </div>
   )
 }
+
 function Comment({ className, user, createdAt, contentClassName, content, ...props }: CommentProps) {
   return (
     <div className={cx('space-y-2', className)} {...props}>
-      <div className='flex items-center gap-2 [&_a]:max-w-[50%]'>
-        <User {...user} />
-        <div className='flex items-center text-xs text-gray-400'>
-          <time dateTime={new Date(createdAt).toISOString()}>{formatDistance(new Date(createdAt))}</time>
-        </div>
-      </div>
+      <UserTime user={user} date={new Date(createdAt)} />
       <MarkdownPreview className={contentClassName} content={content} />
     </div>
   )
