@@ -60,6 +60,12 @@ export default async function Category({ params }: CategoryPageParams) {
         </div>
       </section>
       <section>
+        <div className='flex items-center justify-between gap-2'>
+          <h2 className='text-xl font-semibold'>Challenges</h2>
+          <Button component={Link} href={`/category/${params.categoryId}/solutions`}>
+            View Solutions
+          </Button>
+        </div>
         <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {challenges.map(challenge => (
             <ChallengeCard key={challenge.id} {...challenge} />
@@ -67,7 +73,7 @@ export default async function Category({ params }: CategoryPageParams) {
         </div>
       </section>
       <section>
-        <div className='flex items-center justify-between'>
+        <div className='flex items-center justify-between gap-2'>
           <h2 className='text-xl font-semibold'>InfoJobs Generated Challenges</h2>
           <Button component={Link} href='/challenge/create'>
             Create custom challenge

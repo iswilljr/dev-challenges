@@ -27,6 +27,24 @@ export async function getCategoryChallenges(type: ChallengeType) {
   return challenges
 }
 
+export async function getCategoryChallengeSolutions(type: ChallengeType) {
+  const challenges = await prisma.solution.findMany({
+    where: {
+      challenge: {
+        type,
+      },
+    },
+    include: {
+      user: true,
+    },
+    orderBy: {
+      createdAt: 'asc',
+    },
+  })
+
+  return challenges
+}
+
 export async function getUserCategoryChallenges(type: ChallengeType) {
   const challenges = await prisma.challenge.findMany({
     where: {
