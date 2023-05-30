@@ -1,8 +1,15 @@
+import { ChallengeType } from '@prisma/client'
 import { z } from 'zod'
 
 export type UpdateProfile = z.infer<typeof updateProfileSchema>
 export type EditSolutionSubmission = z.infer<typeof editSolutionSubmissionSchema>
 export type CreateComment = z.infer<typeof createCommentSchema>
+export type GenerateChallenge = z.infer<typeof generateChallengeSchema>
+
+export const generateChallengeSchema = z.object({
+  offerId: z.string().trim(),
+  type: z.enum([ChallengeType.frontend, ChallengeType.fullstack, ChallengeType.responsive]),
+})
 
 export const createCommentSchema = z.object({
   id: z.string().trim(),
