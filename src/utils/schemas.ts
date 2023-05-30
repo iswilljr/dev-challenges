@@ -5,6 +5,20 @@ export type UpdateProfile = z.infer<typeof updateProfileSchema>
 export type EditSolutionSubmission = z.infer<typeof editSolutionSubmissionSchema>
 export type CreateComment = z.infer<typeof createCommentSchema>
 export type GenerateChallenge = z.infer<typeof generateChallengeSchema>
+export type JsonChallenge = z.infer<typeof jsonChallengeSchema>
+export type GeneratedChallengeResponse = z.infer<typeof generatedChallengeResponseSchema>
+
+export const jsonChallengeSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  score: z.number().min(0).max(10),
+  appRequirements: z.string().array(),
+})
+
+export const generatedChallengeResponseSchema = z.object({
+  identifiedTechnologies: z.string().array(),
+  challenge: jsonChallengeSchema,
+})
 
 export const generateChallengeSchema = z.object({
   offerId: z.string().trim(),
