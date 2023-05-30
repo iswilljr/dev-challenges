@@ -25,7 +25,7 @@ export function Select({ id, label, data, className, ...props }: SelectProps) {
       <select
         {...props}
         className={cx(
-          'mt-0.5 h-9 w-full rounded-md border-0 bg-gray-800/50 px-2 py-1.5 text-sm text-gray-200 ring-1 ring-gray-500 duration-150 focus:outline-none focus:ring-2 focus:ring-sky-600',
+          'form-select mt-0.5 h-9 w-full rounded-md border-0 bg-gray-800/50 px-2 py-1.5 text-sm text-gray-200 ring-1 ring-gray-500 duration-150 focus:outline-none focus:ring-2 focus:ring-sky-600',
           className
         )}
       >
