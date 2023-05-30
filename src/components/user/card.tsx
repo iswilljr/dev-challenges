@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { BsGlobeAmericas, BsTwitter, BsEnvelopeAt } from 'react-icons/bs'
+import { BsGlobeAmericas, BsTwitter, BsEnvelopeAt, BsGithub } from 'react-icons/bs'
 import { Avatar } from '../avatar/avatar'
 import { Button } from '../button/button'
 import type { User } from '@prisma/client'
@@ -22,6 +22,11 @@ export function UserCard({ user, editProfileButton }: UserCardProps) {
       href: `mailto:${user.email}`,
       label: user.email,
       icon: BsEnvelopeAt,
+    },
+    {
+      href: `https://github.com/${user.username}`,
+      label: user.username,
+      icon: BsGithub,
     },
     user.website ? { href: user.website, icon: BsGlobeAmericas } : null,
     user.twitterUsername
