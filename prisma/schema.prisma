@@ -55,8 +55,8 @@ model User {
   comments  Comment[]
   replies   CommentReply[]
 
-  challenge   Challenge? @relation(fields: [challengeId], references: [id])
-  challengeId String?    @unique
+  challenge   Challenge?
+  challengeId String?
 }
 
 model VerificationToken {
@@ -79,7 +79,7 @@ model Challenge {
 
   solutions Solution[]
 
-  user   User?
+  user   User?   @relation(fields: [userId], references: [id])
   userId String? @unique
 }
 
