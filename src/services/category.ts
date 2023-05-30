@@ -15,6 +15,9 @@ export async function getCategoryChallenges(type: ChallengeType) {
   const challenges = await prisma.challenge.findMany({
     where: {
       type,
+      userId: {
+        equals: null,
+      },
     },
     orderBy: {
       difficulty: 'asc',
