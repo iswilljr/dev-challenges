@@ -4,7 +4,7 @@ import { getCategoryChallengeSolutions, getSingleCategory } from '@/services/cat
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-static'
-export const dynamicParams = true
+export const dynamicParams = false
 export const revalidate = 10
 
 export async function generateStaticParams(): Promise<CategoryParams[]> {
