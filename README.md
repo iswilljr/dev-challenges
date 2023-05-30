@@ -2,6 +2,8 @@
 
 Web Development Resources that help you to become a Web Developer by working with Real-life projects and practices. Create your own challenges with InfoJobs Offers.
 
+Introducing my web app inspired by [devchallenges.io](https://devchallenges.io) with an exciting twist! This app combines the beloved functionality and sleek web design of [devchallenges.io](https://devchallenges.io) with an innovative addition: the ability for users to create their own challenges using the powerful Infojobs API.
+
 ## Getting Started
 
 1. Install dependencies:
