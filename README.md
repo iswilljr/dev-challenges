@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Dev Challenges
+
+Web Development Resources that help you to become a Web Developer by working with Real-life projects and practices. Create your own challenges with InfoJobs Offers.
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create a **.env.local** file in the root folder and paste your variables:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cp -r .env.example .env
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## How to setup local environment
 
-## Learn More
+### Setup local PostgreSQL database
 
-To learn more about Next.js, take a look at the following resources:
+- Create the database password and paste it to `POSTGRES_PASSWORD`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker-compose up -d
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Get Github OAuth Client ID and Client Secret
 
-## Deploy on Vercel
+- [Click here to create new Github OAuth app](https://github.com/settings/applications/new)
+- Set the Application name. Example: `Dev Challenges development`
+- Set the Homepage URL to `http://localhost:3000`
+- Set the Authorization callback URL to `http://localhost:3000/api/auth/callback/github`
+- Go to "Client secrets" and generate new client secret
+- Copy the Client ID and Client Secret
+- Go to `.env` and paste the Client ID and Client Secret
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Other env variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `INFOJOBS_TOKEN`
+- `NEXTAUTH_SECRET`
+
+### Start developing
+
+Now you can run:
+
+```bash
+pnpm dev
+```
