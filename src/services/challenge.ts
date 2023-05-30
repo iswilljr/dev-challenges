@@ -30,3 +30,11 @@ export async function getSingleChallenge({ challengeId }: ChallengeParams) {
 
   return challenge
 }
+
+export async function getUserGeneratedChallenge({ profileId }: ProfileParams) {
+  const challenge = await prisma.challenge.findUnique({
+    where: { userId: profileId },
+  })
+
+  return challenge
+}

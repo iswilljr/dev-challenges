@@ -1,18 +1,22 @@
 'use client'
 
+import Link from 'next/link'
 import axios from 'redaxios'
 import useSWRMutation from 'swr/mutation'
 import { useState } from 'react'
-import { TbLoader } from 'react-icons/tb'
+import { TbAlertTriangle, TbLoader } from 'react-icons/tb'
 import { Button } from '../button/button'
+import { Modal } from '../modal/modal'
 import { Offer } from './offer'
+import type { Challenge } from '@prisma/client'
 import type { Item } from '@/types/offers'
 
 interface OfferProps {
   initialOffers: Item[]
+  initialGeneratedChallenge?: Challenge | null
 }
 
-export function Offers({ initialOffers }: OfferProps) {
+export function Offers({ initialOffers, initialGeneratedChallenge }: OfferProps) {
   const [offers, setOffers] = useState(initialOffers)
   const [page, setPage] = useState(2)
   const {
@@ -36,6 +40,20 @@ export function Offers({ initialOffers }: OfferProps) {
           ))}
         </div>
       </section>
+
+      {initialGeneratedChallenge && (
+        <Modal opened onClose={() => {}}>
+          <div className='flex items-center justify-center'>
+            <TbAlertTriangle size={100} />
+          </div>
+          <p className='select-none text-center text-lg'>
+            User already have generated a custom challenge.{' '}
+            <Link className='text-blue-300' href='/'>
+              Head back.
+            </Link>
+          </p>
+        </Modal>
+      )}
 
       <div className='sticky bottom-0 flex w-full items-center justify-center gap-2 border-t border-gray-500 bg-zinc-700 py-4'>
         {(res == null || (res != null && res.data.length !== 0)) && (

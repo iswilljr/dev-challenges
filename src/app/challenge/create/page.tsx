@@ -3,12 +3,15 @@ import { Offers } from '@/components/offers/offers'
 import { createChallengeSteps } from '@/utils/steps'
 import { getInfoJobsOffers } from '@/services/offers'
 import { getSessionUserOrRedirect } from '@/services/session'
+import { getUserGeneratedChallenge } from '@/services/challenge'
 
 export default async function Create() {
-  const [offers] = await Promise.all([
+  const [offers, user] = await Promise.all([
     getInfoJobsOffers(),
     getSessionUserOrRedirect({ callbackUrl: '/challenge/create' }),
   ])
+
+  const generatedChallenge = await getUserGeneratedChallenge({ profileId: user.id })
 
   return (
     <div className='space-y-8 pt-8'>
@@ -20,7 +23,7 @@ export default async function Create() {
           ))}
         </div>
       </section>
-      <Offers initialOffers={offers} />
+      <Offers initialOffers={offers} initialGeneratedChallenge={generatedChallenge} />
     </div>
   )
 }
