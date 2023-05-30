@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     })
 
     if (userChallenge) {
-      return NextResponse.json({ message: 'User already have created custom challenge' }, { status: 400 })
+      return NextResponse.json({ message: 'User already has created custom challenge' }, { status: 400 })
     }
 
     const form = await req.json()

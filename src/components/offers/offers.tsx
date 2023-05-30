@@ -47,7 +47,7 @@ export function Offers({ initialOffers, initialGeneratedChallenge }: OfferProps)
             <TbAlertTriangle size={100} />
           </div>
           <p className='select-none text-center text-lg'>
-            User already have generated a custom challenge.{' '}
+            User already has generated a custom challenge.{' '}
             <Link className='text-blue-300' href='/'>
               Head back.
             </Link>
