@@ -23,6 +23,7 @@ export function ChallengeCard({
   title,
   type,
   updatedAt,
+  userId,
   ...cardProps
 }: ChallengeCardProps) {
   const fillColor = getBadgeColorFromChallengeDifficulty(difficulty)
