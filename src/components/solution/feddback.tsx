@@ -1,5 +1,6 @@
 'use client'
 
+import { useSession } from 'next-auth/react'
 import { useCommentState } from '@/hooks/use-comment'
 import { CommentCard } from '../comment/card'
 import { CreateCommentForm } from '../forms/create-comment'
@@ -12,6 +13,7 @@ interface SolutionFeedbackProps {
 
 export function SolutionFeedback({ challenge, solution }: SolutionFeedbackProps) {
   const { comments, addComment } = useCommentState()
+  const { status } = useSession()
 
   return (
     <div className='!mt-8 space-y-4'>
@@ -25,7 +27,7 @@ export function SolutionFeedback({ challenge, solution }: SolutionFeedbackProps)
       ) : (
         <div className='text-lg text-gray-300'>No feedback comments found</div>
       )}
-      <CreateCommentForm id={solution.id} onSuccess={addComment} />
+      {status === 'authenticated' && <CreateCommentForm id={solution.id} onSuccess={addComment} />}
     </div>
   )
 }

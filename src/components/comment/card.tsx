@@ -1,7 +1,7 @@
 import { cx } from '@/utils/cx'
 import { CommentReplyBox } from './reply-box'
 import { MarkdownPreview } from '../markdown/preview'
-import { UserTime } from '../user/time'
+import { User } from '../user/user'
 import type { User as UserType } from '@prisma/client'
 import type { FullComment } from '@/types/comments'
 
@@ -50,7 +50,7 @@ export function CommentCard(props: CommentCardProps) {
 function Comment({ className, user, createdAt, contentClassName, content, ...props }: CommentProps) {
   return (
     <div className={cx('space-y-2', className)} {...props}>
-      <UserTime user={user} date={new Date(createdAt)} />
+      <User user={user} timeAgo={new Date(createdAt)} />
       <MarkdownPreview className={contentClassName} content={content} />
     </div>
   )

@@ -1,7 +1,11 @@
 import { prisma } from '@/utils/prisma'
 
-export async function getChallenges() {
-  return await prisma.challenge.findMany()
+export async function getChallengeIds() {
+  return await prisma.challenge.findMany({
+    select: {
+      id: true,
+    },
+  })
 }
 
 export async function getFullChallenge({ challengeId }: ChallengeParams) {

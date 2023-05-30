@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { Button } from '@/components/button/button'
 import { SubmitSolutionButton } from '@/components/button/submit-solution'
-import { getChallenges } from '@/services/challenge'
+import { getChallengeIds } from '@/services/challenge'
 
 export async function generateStaticParams(): Promise<ChallengeParams[]> {
-  const challenges = await getChallenges()
+  const challenges = await getChallengeIds()
 
   return challenges.map(challenge => ({ challengeId: challenge.id }))
 }

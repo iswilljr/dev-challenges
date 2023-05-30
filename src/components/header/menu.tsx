@@ -11,7 +11,7 @@ interface HeaderMenuProps {
 
 const links = [
   { href: '/profile/:profileId', label: 'Profile', icon: TbUser },
-  { href: '/dashboard', label: 'Dashboard', icon: TbLayoutDashboard },
+  { href: '/dashboard', label: 'Dashboard', disabled: true, icon: TbLayoutDashboard },
   { href: '/settings', label: 'Settings', icon: TbSettings },
 ]
 
@@ -32,10 +32,11 @@ export function HeaderMenu({ profile, profileImage }: HeaderMenuProps) {
       >
         <Menu.Items className='absolute right-0 top-4 w-36 origin-top-right divide-y divide-gray-500 rounded-md border border-gray-500 bg-zinc-600 px-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='py-1'>
-            {links.map(({ href, label, icon: Icon }) => (
+            {links.map(({ href, label, disabled, icon: Icon }) => (
               <Menu.Item key={href}>
                 <Link
-                  className='flex w-full items-center rounded-md p-2 text-sm text-gray-200 hover:bg-zinc-500'
+                  aria-disabled={disabled}
+                  className='flex w-full items-center rounded-md p-2 text-sm text-gray-200 hover:bg-zinc-500 aria-disabled:pointer-events-none aria-disabled:select-none aria-disabled:opacity-50'
                   href={href.replace(':profileId', profile)}
                 >
                   <Icon className='mr-2 h-5 w-5' />

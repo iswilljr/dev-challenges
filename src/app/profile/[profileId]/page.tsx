@@ -2,13 +2,18 @@ import { notFound } from 'next/navigation'
 import { SolutionFeedbackCard, SolutionLargeCard } from '@/components/solution/card'
 import { UserCard } from '@/components/user/card'
 import { getSessionUser } from '@/services/session'
-import { getFullUserProfile, getSingleUser } from '@/services/user'
+import { getFullUserProfile, getSingleUser, getUserProfileIds } from '@/services/user'
 import type { Metadata } from 'next'
 
 export const dynamic = 'force-static'
 export const dynamicParams = true
 export const revalidate = 10
-export const generateStaticParams = () => []
+
+export async function generateStaticParams(): Promise<ProfileParams[]> {
+  const userIds = await getUserProfileIds()
+
+  return userIds.map(user => ({ profileId: user.username }))
+}
 
 export async function generateMetadata({ params }: ProfilePageParams): Promise<Metadata> {
   const user = await getSingleUser(params)

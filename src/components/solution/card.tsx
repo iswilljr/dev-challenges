@@ -9,15 +9,14 @@ interface SolutionCardProps extends Solution {
   user: UserType
 }
 
-export function SolutionCard({ id, title, description, user, updatedAt }: SolutionCardProps) {
+export function SolutionCard({ id, title, description, user, createdAt }: SolutionCardProps) {
   return (
     <Card
       description={description ?? ''}
       descriptionClassName='line-clamp-4'
       href={`/solution/${id}`}
       title={title}
-      topSection={<User {...user} />}
-      bottomSection={<div className='text-end text-sm text-gray-300'>{formatDistance(updatedAt)}</div>}
+      topSection={<User user={user} timeAgo={createdAt} />}
     />
   )
 }

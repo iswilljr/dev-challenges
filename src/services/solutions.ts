@@ -52,3 +52,13 @@ export async function getFullUserSolutions({ userId }: FullUserSolutionsOptions)
 
   return solution
 }
+
+export async function getSolutionIds() {
+  const solutionIds = await prisma.solution.findMany({
+    select: {
+      id: true,
+    },
+  })
+
+  return solutionIds
+}

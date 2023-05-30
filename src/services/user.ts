@@ -31,3 +31,13 @@ export async function getFullUserProfile({ profileId }: ProfileParams) {
 
   return user
 }
+
+export async function getUserProfileIds() {
+  const userIds = await prisma.user.findMany({
+    select: {
+      username: true,
+    },
+  })
+
+  return userIds
+}
