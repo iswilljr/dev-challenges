@@ -1,10 +1,13 @@
 import { Badge, getBadgeColorFromChallengeDifficulty } from '../badge/badge'
 import { Card, type CardProps } from '../card/card'
-import { type Challenge, Difficulty } from '@prisma/client'
+import { User } from '../user/user'
+import { type Challenge, Difficulty, type User as UserType } from '@prisma/client'
 
 interface ChallengeCardProps
   extends Challenge,
-    Omit<CardProps, 'id' | 'href' | 'title' | 'description' | 'bottomSection'> {}
+    Omit<CardProps, 'id' | 'href' | 'title' | 'description' | 'bottomSection'> {
+  user?: UserType | null
+}
 
 const difficultyFillNumbers: Record<Difficulty, number> = {
   [Difficulty.easy]: 1,
@@ -23,6 +26,7 @@ export function ChallengeCard({
   title,
   type,
   updatedAt,
+  user,
   userId,
   ...cardProps
 }: ChallengeCardProps) {
@@ -37,6 +41,7 @@ export function ChallengeCard({
       href={`/challenge/${id}`}
       title={title ?? ''}
       description={description ?? ''}
+      topSection={user && <User user={user} timeAgo={createdAt} />}
       bottomSection={
         <div className='flex flex-1 items-end'>
           <div className='w-full space-y-2 rounded-md bg-gray-600/50 p-2'>

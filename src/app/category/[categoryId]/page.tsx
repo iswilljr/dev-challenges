@@ -1,7 +1,13 @@
+import Link from 'next/link'
+import { Button } from '@/components/button/button'
 import { ChallengeCard } from '@/components/challenge/card'
 import { categories } from '@/utils/categories'
-import { getCategoryChallenges, getSingleCategory } from '@/services/category'
+import { getCategoryChallenges, getSingleCategory, getUserCategoryChallenges } from '@/services/category'
 import type { Metadata } from 'next'
+
+export const dynamic = 'force-static'
+export const dynamicParams = false
+export const revalidate = 10
 
 export async function generateMetadata({ params }: CategoryPageParams): Promise<Metadata> {
   const category = categories.find(category => category.id === params.categoryId)
@@ -18,7 +24,10 @@ export async function generateStaticParams() {
 
 export default async function Category({ params }: CategoryPageParams) {
   const category = getSingleCategory(params)
-  const challenges = await getCategoryChallenges(category.type)
+  const [challenges, userChallenges] = await Promise.all([
+    getCategoryChallenges(category.type),
+    getUserCategoryChallenges(category.type),
+  ])
 
   return (
     <>
@@ -56,6 +65,25 @@ export default async function Category({ params }: CategoryPageParams) {
             <ChallengeCard key={challenge.id} {...challenge} />
           ))}
         </div>
+      </section>
+      <section>
+        <div className='flex items-center justify-between'>
+          <h2 className='text-xl font-semibold'>InfoJobs Generated Challenges</h2>
+          <Button component={Link} href='/challenge/create'>
+            Create custom challenge
+          </Button>
+        </div>
+        {userChallenges.length > 0 ? (
+          <div className='mt-4 grid items-center gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+            {userChallenges.map(challenge => (
+              <ChallengeCard key={challenge.id} className='h-auto' {...challenge} />
+            ))}
+          </div>
+        ) : (
+          <div className='mt-2'>
+            <p className='text-gray-400'>No generated challenges yet.</p>
+          </div>
+        )}
       </section>
     </>
   )
