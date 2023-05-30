@@ -21,7 +21,7 @@ export const generatedChallengeResponseSchema = z.object({
 })
 
 export const generateChallengeSchema = z.object({
-  offerId: z.string().trim(),
+  generatedChallenge: generatedChallengeResponseSchema,
   type: z.enum([ChallengeType.frontend, ChallengeType.fullstack, ChallengeType.responsive]),
 })
 

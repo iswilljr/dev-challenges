@@ -2,10 +2,12 @@
 
 import axios from 'redaxios'
 import useSWRMutation from 'swr/mutation'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import { type Challenge, ChallengeType } from '@prisma/client'
-import { useForm, zodResolver } from '@mantine/form'
-import { type GenerateChallenge, generateChallengeSchema } from '@/utils/schemas'
+import { useForm } from '@mantine/form'
+import { type GenerateChallenge } from '@/utils/schemas'
+import { generateChallenge } from '@/utils/generate'
 import { Button } from '../button/button'
 import { Select } from '../input/select'
 import type { Offer } from '@/types/offers'
@@ -16,32 +18,48 @@ interface CreateCommentFormProps {
   onSuccess: (data: Challenge) => void
 }
 
-const validate = zodResolver(generateChallengeSchema)
-
 export function GenerateChallengeForm({ offer, onCancel, onSuccess }: CreateCommentFormProps) {
+  const [loading, setLoading] = useState(false)
   const { trigger, isMutating } = useSWRMutation(
     '/api/challenge/generate',
     (url, data: { arg: GenerateChallenge }) => axios.post(url, data.arg),
     {
-      onError: err => toast.error(err?.data?.message ?? 'Error generating challenge'),
       onSuccess: res => {
-        console.log(res.data)
         onSuccess(res.data)
         toast.success('Challenge successfully generated')
       },
     }
   )
 
-  const { onSubmit, getInputProps } = useForm<GenerateChallenge>({
+  const { onSubmit, getInputProps } = useForm<Partial<GenerateChallenge>>({
     initialValues: {
-      offerId: offer?.id ?? '',
       type: 'frontend',
     },
-    validate,
   })
 
   return (
-    <form className='space-y-4' onSubmit={onSubmit(values => trigger(values).catch(console.error))}>
+    <form
+      className='space-y-4'
+      onSubmit={onSubmit(async values => {
+        try {
+          if (loading || isMutating) return
+
+          setLoading(true)
+
+          const generatedChallenge = await generateChallenge({ offer, type: values.type })
+
+          await trigger({
+            generatedChallenge,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            type: values.type!,
+          })
+        } catch (err: any) {
+          toast.error(err?.data?.message ?? err.message ?? 'Error generating challenge')
+        } finally {
+          setLoading(false)
+        }
+      })}
+    >
       <Select
         id='type'
         label='Challenge Type'
@@ -53,10 +71,10 @@ export function GenerateChallengeForm({ offer, onCancel, onSuccess }: CreateComm
         {...getInputProps('type')}
       />
       <div className='flex items-center justify-end gap-2'>
-        <Button disabled={isMutating} type='button' variant='secondary' onClick={onCancel}>
+        <Button disabled={loading || isMutating} type='button' variant='secondary' onClick={onCancel}>
           Cancel
         </Button>
-        <Button loading={isMutating} type='submit'>
+        <Button loading={loading || isMutating} type='submit'>
           Create
         </Button>
       </div>

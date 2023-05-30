@@ -5,6 +5,8 @@ import { getInfoJobsOffers } from '@/services/offers'
 import { getSessionUserOrRedirect } from '@/services/session'
 import { getUserGeneratedChallenge } from '@/services/challenge'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Create() {
   const [offers, user] = await Promise.all([
     getInfoJobsOffers(),
