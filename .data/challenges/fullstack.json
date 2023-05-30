@@ -1,4 +1,5 @@
 {
+  "identifiedTechnologies": ["React", "Vue", "Angular", "Next.js", "Nuxt.js", "SvelteKit", "Astro.build"],
   "challenges": [
     {
       "title": "Music Streaming Platform",

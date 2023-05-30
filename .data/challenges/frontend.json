@@ -1,4 +1,5 @@
 {
+  "identifiedTechnologies": ["HTML", "CSS", "JavaScript", "React", "Vue", "Angular"],
   "challenges": [
     {
       "title": "Currency Converter",

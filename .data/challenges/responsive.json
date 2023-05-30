@@ -1,4 +1,5 @@
 {
+  "identifiedTechnologies": ["HTML", "CSS", "JavaScript"],
   "challenges": [
     {
       "title": "Landing Page",
