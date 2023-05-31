@@ -5,7 +5,9 @@ import { User } from '../user/user'
 import type { User as UserType } from '@prisma/client'
 import type { FullComment } from '@/types/comments'
 
-interface CommentCardProps extends FullComment {}
+interface CommentCardProps extends FullComment {
+  withReplyBox: boolean
+}
 interface CommentProps extends React.HTMLAttributes<HTMLDivElement> {
   contentClassName?: string
   content: string
@@ -26,7 +28,7 @@ export function CommentCard(props: CommentCardProps) {
         user={props.user}
       />
       {props.replies.length > 0 && (
-        <div className='space-y-4 border-b border-gray-500 bg-gray-800/50 p-4'>
+        <div className={cx('space-y-4 bg-gray-800/50 p-4', !props.withReplyBox && 'rounded-b-md')}>
           {props.replies.map(reply => (
             <Comment
               key={reply.id}
@@ -40,9 +42,11 @@ export function CommentCard(props: CommentCardProps) {
           ))}
         </div>
       )}
-      <div className='rounded-b-md px-4 py-2'>
-        <CommentReplyBox commentId={props.id} />
-      </div>
+      {props.withReplyBox && (
+        <div className='rounded-b-md border-t border-gray-500 px-4 py-2'>
+          <CommentReplyBox commentId={props.id} />
+        </div>
+      )}
     </div>
   )
 }

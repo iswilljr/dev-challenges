@@ -11,7 +11,7 @@ interface SolutionFeedbackProps {
   challenge: Challenge
 }
 
-export function SolutionFeedback({ challenge, solution }: SolutionFeedbackProps) {
+export function SolutionFeedback({ solution }: SolutionFeedbackProps) {
   const { comments, addComment } = useCommentState()
   const { status } = useSession()
 
@@ -21,7 +21,7 @@ export function SolutionFeedback({ challenge, solution }: SolutionFeedbackProps)
       {comments.length > 0 ? (
         <div className='space-y-2'>
           {comments.map(comment => (
-            <CommentCard key={comment.id} {...comment} />
+            <CommentCard key={comment.id} withReplyBox={status === 'authenticated'} {...comment} />
           ))}
         </div>
       ) : (

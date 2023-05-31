@@ -24,6 +24,8 @@ export function CommentReplyBox({ commentId }: CommentReplyBoxProps) {
   return showForm ? (
     <CreateCommentForm id={commentId} onSuccess={onSuccess} onCancel={() => setShowForm(false)} autoFocus isReply />
   ) : (
-    <Input id='reply' placeholder='Write your reply' onFocus={() => setShowForm(true)} />
+    <div className='first:[&_.input-root>div]:mt-0'>
+      <Input id='reply' placeholder='Write your reply' onFocus={() => setShowForm(true)} />
+    </div>
   )
 }
