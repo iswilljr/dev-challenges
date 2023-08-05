@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth-options'
+import { CustomError, UnauthorizedError, getErrorResponse } from '@/utils/error'
 import { prisma } from '@/utils/prisma'
 import { editSolutionSubmissionSchema } from '@/utils/schemas'
 import { getChallengeSolution } from '@/services/solutions'
@@ -10,7 +11,7 @@ export async function POST(req: Request) {
     const session = await getServerSession(authOptions)
 
     if (!session) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+      throw new UnauthorizedError()
     }
 
     const form = await req.json()
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
     })
 
     if (!challenge) {
-      return NextResponse.json({ message: 'Challenge not found' }, { status: 404 })
+      throw new CustomError({ message: 'Challenge not found', status: 404 })
     }
 
     const solution = await getChallengeSolution({ challengeId: challenge.id, userId: session.user.id })
@@ -41,7 +42,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(createdOrUpdated)
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 400 })
+    return getErrorResponse(error)
   }
 }

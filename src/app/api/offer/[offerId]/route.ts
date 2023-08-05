@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { getErrorResponse } from '@/utils/error'
 import { getInfoJobsOfferById } from '@/services/offers'
 
 export const dynamic = 'force-dynamic'
@@ -9,7 +10,6 @@ export async function GET(req: Request, context: OfferPageParams) {
 
     return NextResponse.json(offer)
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({ message: 'Server Error' }, { status: 500 })
+    return getErrorResponse(error)
   }
 }

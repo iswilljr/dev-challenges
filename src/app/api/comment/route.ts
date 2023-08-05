@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/utils/auth-options'
 import { createCommentSchema } from '@/utils/schemas'
+import { CustomError, UnauthorizedError, getErrorResponse } from '@/utils/error'
 import { prisma } from '@/utils/prisma'
 
 export async function POST(req: Request) {
@@ -9,7 +10,7 @@ export async function POST(req: Request) {
     const session = await getServerSession(authOptions)
 
     if (!session) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+      throw new UnauthorizedError()
     }
 
     const form = await req.json()
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
       : await prisma.solution.findUnique({ where: { id } })
 
     if (!value) {
-      return NextResponse.json({ message: 'Solution or Comment not found' }, { status: 404 })
+      throw new CustomError({ message: 'Solution or Comment not found', status: 404 })
     }
 
     const created = isReply
@@ -52,7 +53,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(data)
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 400 })
+    return getErrorResponse(error)
   }
 }

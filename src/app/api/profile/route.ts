@@ -1,4 +1,5 @@
 import { authOptions } from '@/utils/auth-options'
+import { UnauthorizedError, getErrorResponse } from '@/utils/error'
 import { prisma } from '@/utils/prisma'
 import { updateProfileSchema } from '@/utils/schemas'
 import { getServerSession } from 'next-auth'
@@ -9,7 +10,7 @@ export async function POST(req: Request) {
     const session = await getServerSession(authOptions)
 
     if (!session) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+      throw new UnauthorizedError()
     }
 
     const form = await req.json()
@@ -27,7 +28,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(user)
   } catch (error) {
-    console.log(error)
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 400 })
+    return getErrorResponse(error)
   }
 }

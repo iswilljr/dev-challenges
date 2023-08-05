@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { jsonToChallenge } from '@/utils/convert'
+import { CustomError, UnauthorizedError, getErrorResponse } from '@/utils/error'
 import { generateChallengeSchema } from '@/utils/schemas'
 import { prisma } from '@/utils/prisma'
 import { getSessionUser } from '@/services/session'
@@ -11,7 +12,7 @@ export async function POST(req: Request) {
     const session = await getSessionUser()
 
     if (!session) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+      throw new UnauthorizedError()
     }
 
     const userChallenge = await prisma.challenge.findUnique({
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
     })
 
     if (userChallenge) {
-      return NextResponse.json({ message: 'User already has created custom challenge' }, { status: 400 })
+      throw new CustomError({ message: 'User already has created custom challenge' })
     }
 
     const form = await req.json()
@@ -40,7 +41,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json(challenge)
   } catch (error) {
-    console.error(error)
-    return NextResponse.json({ message: 'Something went wrong' }, { status: 400 })
+    return getErrorResponse(error)
   }
 }
