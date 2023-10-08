@@ -22,4 +22,5 @@ module.exports = {
     '@typescript-eslint/no-confusing-void-expression': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
   },
+  ignorePatterns: ['.eslintrc.cjs', '.prettierrc.cjs', 'next.config.js', 'postcss.config.js', 'tailwind.config.js'],
 }
