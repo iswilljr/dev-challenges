@@ -37,7 +37,7 @@ export function EditSolutionSubmissionForm({ initialSolution }: EditSolutionSubm
   )
   const { onSubmit, getInputProps, onReset, isDirty } = useForm<EditSolutionSubmission>({
     initialValues: {
-      challengeId: params.challengeId,
+      challengeId: params.challengeId as string,
       title: initialSolution?.title ?? '',
       description: initialSolution?.description ?? '',
       demoURL: initialSolution?.demoURL ?? '',
